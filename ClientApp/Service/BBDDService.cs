@@ -26,6 +26,16 @@ namespace ClientApp.Service
 
             return new ObservableCollection<platos>(consulta.ToList());
         }
+        //public static ObservableCollection<platos> prueba(categorias categoria)
+        //{
+        //    var consulta = from p in _contexto.platos
+        //                   where p.idCategoria == categoria.idCategoria
+        //                   orderby p.nombrePlato
+        //                   select p;
+
+        //    return new ObservableCollection<platos>(consulta.ToList());
+        //}
+
 
 
     }
