@@ -1,0 +1,344 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RestauranteConstanTeamModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="categorias">
+          <Key>
+            <PropertyRef Name="idCategoria" />
+          </Key>
+          <Property Name="idCategoria" Type="int" Nullable="false" />
+          <Property Name="nombreCategoria" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ingredientes">
+          <Key>
+            <PropertyRef Name="idIngrediente" />
+          </Key>
+          <Property Name="idIngrediente" Type="int" Nullable="false" />
+          <Property Name="nombreIngrediente" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ingredientesPorPlato">
+          <Key>
+            <PropertyRef Name="idPlato" />
+            <PropertyRef Name="idIngrediente" />
+          </Key>
+          <Property Name="idPlato" Type="int" Nullable="false" />
+          <Property Name="idIngrediente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pedidos">
+          <Key>
+            <PropertyRef Name="idPedido" />
+          </Key>
+          <Property Name="idPedido" Type="int" Nullable="false" />
+          <Property Name="precioTotal" Type="float" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="platos">
+          <Key>
+            <PropertyRef Name="idPlato" />
+          </Key>
+          <Property Name="idPlato" Type="int" Nullable="false" />
+          <Property Name="idCategoria" Type="int" Nullable="false" />
+          <Property Name="nombrePlato" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="precio" Type="float" />
+          <Property Name="imagenPlato" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="platosPorPedido">
+          <Key>
+            <PropertyRef Name="idPedido" />
+            <PropertyRef Name="idPlato" />
+          </Key>
+          <Property Name="idPedido" Type="int" Nullable="false" />
+          <Property Name="idPlato" Type="int" Nullable="false" />
+          <Property Name="cantidad" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__ingredien__idIng__534D60F1">
+          <End Role="ingredientes" Type="Self.ingredientes" Multiplicity="1" />
+          <End Role="ingredientesPorPlato" Type="Self.ingredientesPorPlato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ingredientes">
+              <PropertyRef Name="idIngrediente" />
+            </Principal>
+            <Dependent Role="ingredientesPorPlato">
+              <PropertyRef Name="idIngrediente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ingredien__idPla__52593CB8">
+          <End Role="platos" Type="Self.platos" Multiplicity="1" />
+          <End Role="ingredientesPorPlato" Type="Self.ingredientesPorPlato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="platos">
+              <PropertyRef Name="idPlato" />
+            </Principal>
+            <Dependent Role="ingredientesPorPlato">
+              <PropertyRef Name="idPlato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__platos__idCatego__4D94879B">
+          <End Role="categorias" Type="Self.categorias" Multiplicity="1" />
+          <End Role="platos" Type="Self.platos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categorias">
+              <PropertyRef Name="idCategoria" />
+            </Principal>
+            <Dependent Role="platos">
+              <PropertyRef Name="idCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__platosPor__idPed__59063A47">
+          <End Role="pedidos" Type="Self.pedidos" Multiplicity="1" />
+          <End Role="platosPorPedido" Type="Self.platosPorPedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pedidos">
+              <PropertyRef Name="idPedido" />
+            </Principal>
+            <Dependent Role="platosPorPedido">
+              <PropertyRef Name="idPedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__platosPor__idPla__5812160E">
+          <End Role="platos" Type="Self.platos" Multiplicity="1" />
+          <End Role="platosPorPedido" Type="Self.platosPorPedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="platos">
+              <PropertyRef Name="idPlato" />
+            </Principal>
+            <Dependent Role="platosPorPedido">
+              <PropertyRef Name="idPlato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RestauranteConstanTeamModelStoreContainer">
+          <EntitySet Name="categorias" EntityType="Self.categorias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ingredientes" EntityType="Self.ingredientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ingredientesPorPlato" EntityType="Self.ingredientesPorPlato" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pedidos" EntityType="Self.pedidos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="platos" EntityType="Self.platos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="platosPorPedido" EntityType="Self.platosPorPedido" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ingredien__idIng__534D60F1" Association="Self.FK__ingredien__idIng__534D60F1">
+            <End Role="ingredientes" EntitySet="ingredientes" />
+            <End Role="ingredientesPorPlato" EntitySet="ingredientesPorPlato" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ingredien__idPla__52593CB8" Association="Self.FK__ingredien__idPla__52593CB8">
+            <End Role="platos" EntitySet="platos" />
+            <End Role="ingredientesPorPlato" EntitySet="ingredientesPorPlato" />
+          </AssociationSet>
+          <AssociationSet Name="FK__platos__idCatego__4D94879B" Association="Self.FK__platos__idCatego__4D94879B">
+            <End Role="categorias" EntitySet="categorias" />
+            <End Role="platos" EntitySet="platos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__platosPor__idPed__59063A47" Association="Self.FK__platosPor__idPed__59063A47">
+            <End Role="pedidos" EntitySet="pedidos" />
+            <End Role="platosPorPedido" EntitySet="platosPorPedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__platosPor__idPla__5812160E" Association="Self.FK__platosPor__idPla__5812160E">
+            <End Role="platos" EntitySet="platos" />
+            <End Role="platosPorPedido" EntitySet="platosPorPedido" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RestauranteConstanTeamModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="categorias">
+          <Key>
+            <PropertyRef Name="idCategoria" />
+          </Key>
+          <Property Name="idCategoria" Type="Int32" Nullable="false" />
+          <Property Name="nombreCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="platos" Relationship="Self.FK__platos__idCatego__4D94879B" FromRole="categorias" ToRole="platos" />
+        </EntityType>
+        <EntityType Name="ingredientes">
+          <Key>
+            <PropertyRef Name="idIngrediente" />
+          </Key>
+          <Property Name="idIngrediente" Type="Int32" Nullable="false" />
+          <Property Name="nombreIngrediente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="platos" Relationship="Self.ingredientesPorPlato" FromRole="ingredientes" ToRole="platos" />
+        </EntityType>
+        <EntityType Name="pedidos">
+          <Key>
+            <PropertyRef Name="idPedido" />
+          </Key>
+          <Property Name="idPedido" Type="Int32" Nullable="false" />
+          <Property Name="precioTotal" Type="Double" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="platosPorPedido" Relationship="Self.FK__platosPor__idPed__59063A47" FromRole="pedidos" ToRole="platosPorPedido" />
+        </EntityType>
+        <EntityType Name="platos">
+          <Key>
+            <PropertyRef Name="idPlato" />
+          </Key>
+          <Property Name="idPlato" Type="Int32" Nullable="false" />
+          <Property Name="idCategoria" Type="Int32" Nullable="false" />
+          <Property Name="nombrePlato" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="precio" Type="Double" />
+          <Property Name="imagenPlato" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="categorias" Relationship="Self.FK__platos__idCatego__4D94879B" FromRole="platos" ToRole="categorias" />
+          <NavigationProperty Name="platosPorPedido" Relationship="Self.FK__platosPor__idPla__5812160E" FromRole="platos" ToRole="platosPorPedido" />
+          <NavigationProperty Name="ingredientes" Relationship="Self.ingredientesPorPlato" FromRole="platos" ToRole="ingredientes" />
+        </EntityType>
+        <EntityType Name="platosPorPedido">
+          <Key>
+            <PropertyRef Name="idPedido" />
+            <PropertyRef Name="idPlato" />
+          </Key>
+          <Property Name="idPedido" Type="Int32" Nullable="false" />
+          <Property Name="idPlato" Type="Int32" Nullable="false" />
+          <Property Name="cantidad" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="pedidos" Relationship="Self.FK__platosPor__idPed__59063A47" FromRole="platosPorPedido" ToRole="pedidos" />
+          <NavigationProperty Name="platos" Relationship="Self.FK__platosPor__idPla__5812160E" FromRole="platosPorPedido" ToRole="platos" />
+        </EntityType>
+        <Association Name="FK__platos__idCatego__4D94879B">
+          <End Role="categorias" Type="Self.categorias" Multiplicity="1" />
+          <End Role="platos" Type="Self.platos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categorias">
+              <PropertyRef Name="idCategoria" />
+            </Principal>
+            <Dependent Role="platos">
+              <PropertyRef Name="idCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__platosPor__idPed__59063A47">
+          <End Role="pedidos" Type="Self.pedidos" Multiplicity="1" />
+          <End Role="platosPorPedido" Type="Self.platosPorPedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pedidos">
+              <PropertyRef Name="idPedido" />
+            </Principal>
+            <Dependent Role="platosPorPedido">
+              <PropertyRef Name="idPedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__platosPor__idPla__5812160E">
+          <End Role="platos" Type="Self.platos" Multiplicity="1" />
+          <End Role="platosPorPedido" Type="Self.platosPorPedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="platos">
+              <PropertyRef Name="idPlato" />
+            </Principal>
+            <Dependent Role="platosPorPedido">
+              <PropertyRef Name="idPlato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ingredientesPorPlato">
+          <End Role="ingredientes" Type="Self.ingredientes" Multiplicity="*" />
+          <End Role="platos" Type="Self.platos" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="RestauranteConstanTeamEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="categorias" EntityType="Self.categorias" />
+          <EntitySet Name="ingredientes" EntityType="Self.ingredientes" />
+          <EntitySet Name="pedidos" EntityType="Self.pedidos" />
+          <EntitySet Name="platos" EntityType="Self.platos" />
+          <EntitySet Name="platosPorPedido" EntityType="Self.platosPorPedido" />
+          <AssociationSet Name="FK__platos__idCatego__4D94879B" Association="Self.FK__platos__idCatego__4D94879B">
+            <End Role="categorias" EntitySet="categorias" />
+            <End Role="platos" EntitySet="platos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__platosPor__idPed__59063A47" Association="Self.FK__platosPor__idPed__59063A47">
+            <End Role="pedidos" EntitySet="pedidos" />
+            <End Role="platosPorPedido" EntitySet="platosPorPedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__platosPor__idPla__5812160E" Association="Self.FK__platosPor__idPla__5812160E">
+            <End Role="platos" EntitySet="platos" />
+            <End Role="platosPorPedido" EntitySet="platosPorPedido" />
+          </AssociationSet>
+          <AssociationSet Name="ingredientesPorPlato" Association="Self.ingredientesPorPlato">
+            <End Role="ingredientes" EntitySet="ingredientes" />
+            <End Role="platos" EntitySet="platos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RestauranteConstanTeamModelStoreContainer" CdmEntityContainer="RestauranteConstanTeamEntities">
+          <EntitySetMapping Name="categorias">
+            <EntityTypeMapping TypeName="RestauranteConstanTeamModel.categorias">
+              <MappingFragment StoreEntitySet="categorias">
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+                <ScalarProperty Name="nombreCategoria" ColumnName="nombreCategoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ingredientes">
+            <EntityTypeMapping TypeName="RestauranteConstanTeamModel.ingredientes">
+              <MappingFragment StoreEntitySet="ingredientes">
+                <ScalarProperty Name="idIngrediente" ColumnName="idIngrediente" />
+                <ScalarProperty Name="nombreIngrediente" ColumnName="nombreIngrediente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pedidos">
+            <EntityTypeMapping TypeName="RestauranteConstanTeamModel.pedidos">
+              <MappingFragment StoreEntitySet="pedidos">
+                <ScalarProperty Name="idPedido" ColumnName="idPedido" />
+                <ScalarProperty Name="precioTotal" ColumnName="precioTotal" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="platos">
+            <EntityTypeMapping TypeName="RestauranteConstanTeamModel.platos">
+              <MappingFragment StoreEntitySet="platos">
+                <ScalarProperty Name="idPlato" ColumnName="idPlato" />
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+                <ScalarProperty Name="nombrePlato" ColumnName="nombrePlato" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="imagenPlato" ColumnName="imagenPlato" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="platosPorPedido">
+            <EntityTypeMapping TypeName="RestauranteConstanTeamModel.platosPorPedido">
+              <MappingFragment StoreEntitySet="platosPorPedido">
+                <ScalarProperty Name="idPedido" ColumnName="idPedido" />
+                <ScalarProperty Name="idPlato" ColumnName="idPlato" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="ingredientesPorPlato" TypeName="RestauranteConstanTeamModel.ingredientesPorPlato" StoreEntitySet="ingredientesPorPlato">
+            <EndProperty Name="ingredientes">
+              <ScalarProperty Name="idIngrediente" ColumnName="idIngrediente" />
+            </EndProperty>
+            <EndProperty Name="platos">
+              <ScalarProperty Name="idPlato" ColumnName="idPlato" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
