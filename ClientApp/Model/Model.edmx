@@ -147,7 +147,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RestauranteConstanTeamModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="categorias">
+        <EntityType Name="Categoria">
           <Key>
             <PropertyRef Name="idCategoria" />
           </Key>
@@ -155,7 +155,7 @@
           <Property Name="nombreCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="platos" Relationship="Self.FK__platos__idCatego__4D94879B" FromRole="categorias" ToRole="platos" />
         </EntityType>
-        <EntityType Name="ingredientes">
+        <EntityType Name="Ingrediente">
           <Key>
             <PropertyRef Name="idIngrediente" />
           </Key>
@@ -163,7 +163,7 @@
           <Property Name="nombreIngrediente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="platos" Relationship="Self.ingredientesPorPlato" FromRole="ingredientes" ToRole="platos" />
         </EntityType>
-        <EntityType Name="pedidos">
+        <EntityType Name="Pedido">
           <Key>
             <PropertyRef Name="idPedido" />
           </Key>
@@ -172,7 +172,7 @@
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="platosPorPedido" Relationship="Self.FK__platosPor__idPed__59063A47" FromRole="pedidos" ToRole="platosPorPedido" />
         </EntityType>
-        <EntityType Name="platos">
+        <EntityType Name="Plato">
           <Key>
             <PropertyRef Name="idPlato" />
           </Key>
@@ -197,8 +197,8 @@
           <NavigationProperty Name="platos" Relationship="Self.FK__platosPor__idPla__5812160E" FromRole="platosPorPedido" ToRole="platos" />
         </EntityType>
         <Association Name="FK__platos__idCatego__4D94879B">
-          <End Role="categorias" Type="Self.categorias" Multiplicity="1" />
-          <End Role="platos" Type="Self.platos" Multiplicity="*" />
+          <End Role="categorias" Type="RestauranteConstanTeamModel.Categoria" Multiplicity="1" />
+          <End Role="platos" Type="RestauranteConstanTeamModel.Plato" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="categorias">
               <PropertyRef Name="idCategoria" />
@@ -209,7 +209,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__platosPor__idPed__59063A47">
-          <End Role="pedidos" Type="Self.pedidos" Multiplicity="1" />
+          <End Role="pedidos" Type="RestauranteConstanTeamModel.Pedido" Multiplicity="1" />
           <End Role="platosPorPedido" Type="Self.platosPorPedido" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="pedidos">
@@ -221,7 +221,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__platosPor__idPla__5812160E">
-          <End Role="platos" Type="Self.platos" Multiplicity="1" />
+          <End Role="platos" Type="RestauranteConstanTeamModel.Plato" Multiplicity="1" />
           <End Role="platosPorPedido" Type="Self.platosPorPedido" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="platos">
@@ -233,14 +233,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="ingredientesPorPlato">
-          <End Role="ingredientes" Type="Self.ingredientes" Multiplicity="*" />
-          <End Role="platos" Type="Self.platos" Multiplicity="*" />
+          <End Role="ingredientes" Type="RestauranteConstanTeamModel.Ingrediente" Multiplicity="*" />
+          <End Role="platos" Type="RestauranteConstanTeamModel.Plato" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="RestauranteConstanTeamEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="categorias" EntityType="Self.categorias" />
-          <EntitySet Name="ingredientes" EntityType="Self.ingredientes" />
-          <EntitySet Name="pedidos" EntityType="Self.pedidos" />
-          <EntitySet Name="platos" EntityType="Self.platos" />
+        <EntityContainer Name="RestauranteEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="categorias" EntityType="RestauranteConstanTeamModel.Categoria" />
+          <EntitySet Name="ingredientes" EntityType="RestauranteConstanTeamModel.Ingrediente" />
+          <EntitySet Name="pedidos" EntityType="RestauranteConstanTeamModel.Pedido" />
+          <EntitySet Name="platos" EntityType="RestauranteConstanTeamModel.Plato" />
           <EntitySet Name="platosPorPedido" EntityType="Self.platosPorPedido" />
           <AssociationSet Name="FK__platos__idCatego__4D94879B" Association="Self.FK__platos__idCatego__4D94879B">
             <End Role="categorias" EntitySet="categorias" />
@@ -264,9 +264,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="RestauranteConstanTeamModelStoreContainer" CdmEntityContainer="RestauranteConstanTeamEntities">
+        <EntityContainerMapping StorageEntityContainer="RestauranteConstanTeamModelStoreContainer" CdmEntityContainer="RestauranteEntities">
           <EntitySetMapping Name="categorias">
-            <EntityTypeMapping TypeName="RestauranteConstanTeamModel.categorias">
+            <EntityTypeMapping TypeName="RestauranteConstanTeamModel.Categoria">
               <MappingFragment StoreEntitySet="categorias">
                 <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
                 <ScalarProperty Name="nombreCategoria" ColumnName="nombreCategoria" />
@@ -274,7 +274,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ingredientes">
-            <EntityTypeMapping TypeName="RestauranteConstanTeamModel.ingredientes">
+            <EntityTypeMapping TypeName="RestauranteConstanTeamModel.Ingrediente">
               <MappingFragment StoreEntitySet="ingredientes">
                 <ScalarProperty Name="idIngrediente" ColumnName="idIngrediente" />
                 <ScalarProperty Name="nombreIngrediente" ColumnName="nombreIngrediente" />
@@ -282,7 +282,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="pedidos">
-            <EntityTypeMapping TypeName="RestauranteConstanTeamModel.pedidos">
+            <EntityTypeMapping TypeName="RestauranteConstanTeamModel.Pedido">
               <MappingFragment StoreEntitySet="pedidos">
                 <ScalarProperty Name="idPedido" ColumnName="idPedido" />
                 <ScalarProperty Name="precioTotal" ColumnName="precioTotal" />
@@ -291,7 +291,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="platos">
-            <EntityTypeMapping TypeName="RestauranteConstanTeamModel.platos">
+            <EntityTypeMapping TypeName="RestauranteConstanTeamModel.Plato">
               <MappingFragment StoreEntitySet="platos">
                 <ScalarProperty Name="idPlato" ColumnName="idPlato" />
                 <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />

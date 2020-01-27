@@ -13,10 +13,10 @@ namespace ClientApp.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class RestauranteConstanTeamEntities : DbContext
+    public partial class RestauranteEntities : DbContext
     {
-        public RestauranteConstanTeamEntities()
-            : base("name=RestauranteConstanTeamEntities")
+        public RestauranteEntities()
+            : base("name=RestauranteEntities")
         {
         }
     
@@ -25,10 +25,10 @@ namespace ClientApp.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<categorias> categorias { get; set; }
-        public virtual DbSet<ingredientes> ingredientes { get; set; }
-        public virtual DbSet<pedidos> pedidos { get; set; }
-        public virtual DbSet<platos> platos { get; set; }
+        public virtual DbSet<Categoria> categorias { get; set; }
+        public virtual DbSet<Ingrediente> ingredientes { get; set; }
+        public virtual DbSet<Pedido> pedidos { get; set; }
+        public virtual DbSet<Plato> platos { get; set; }
         public virtual DbSet<platosPorPedido> platosPorPedido { get; set; }
     }
 }

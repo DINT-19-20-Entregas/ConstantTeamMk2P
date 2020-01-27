@@ -18,7 +18,7 @@ namespace ClientApp.Model
         public int idPlato { get; set; }
         public int cantidad { get; set; }
     
-        public virtual pedidos pedidos { get; set; }
-        public virtual platos platos { get; set; }
+        public virtual Pedido pedidos { get; set; }
+        public virtual Plato platos { get; set; }
     }
 }
