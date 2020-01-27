@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,16 +16,17 @@ namespace ClientApp.Service
         static BBDDService()
         {
             contexto = new RestauranteEntities();
-            
             contexto.pedidos.Load();
             contexto.platos.Load();
             contexto.categorias.Load();
             contexto.ingredientes.Load();
+            contexto.platosPorPedido.Load();
         }
 
+        // CONSULTAR TODOS LOS REGISTROS DE LAS TABLAS
         public static ObservableCollection<Categoria> GetCategorias()
         {
-            return contexto.categorias.local();
+            return contexto.categorias.Local;
         }
 
         public static ObservableCollection<Plato> GetPlatos()
@@ -34,7 +36,7 @@ namespace ClientApp.Service
 
         public static ObservableCollection<Pedido> GetPedidos()
         {
-            return contexto.platos.Local;
+            return contexto.pedidos.Local;
         }
 
         public static ObservableCollection<Ingrediente> GetIngredientes()
@@ -42,89 +44,83 @@ namespace ClientApp.Service
             return contexto.ingredientes.Local;
         }
 
+        // Añadir y eliminar
         public static int AddPlato(Plato item)
         {
             contexto.platos.Add(item);
-            return contexto.platos.SaveChanges();
+            return contexto.SaveChanges();
         }
 
         public static int AddPedido(Pedido item)
         {
             contexto.pedidos.Add(item);
-            return contexto.pedidos.SaveChanges();
+            return contexto.SaveChanges();
         }
 
         public static int AddIngrediente(Ingrediente item)
         {    
 
             contexto.ingredientes.Add(item);
-            return contexto.ingredientes.SaveChanges();
+            return contexto.SaveChanges();
         }
 
         public static int AddCategoria(Categoria item)
         {
 
             contexto.categorias.Add(item);
-            return contexto.categorias.SaveChanges();
+            return contexto.SaveChanges();
         }
 
         public static int DeletePlato(Plato item)
         {
             contexto.platos.Remove(item);
-            return contexto.platos.SaveChanges();
+            return contexto.SaveChanges();
         }
 
         public static int DeleteCategoria(Categoria item)
         {
             contexto.categorias.Remove(item);
-            return contexto.categorias.SaveChanges();
+            return contexto.SaveChanges();
         }
 
         public static int DeletePedido(Pedido item)
         {
             contexto.pedidos.Remove(item);
-            return contexto.pedidos.SaveChanges();
+            return contexto.SaveChanges();
         }
         public static int DeleteIngrediente(Ingrediente item)
         {
             contexto.ingredientes.Remove(item);
-            return contexto.ingredientes.SaveChanges();
+            return contexto.SaveChanges();
         }
+
+
+
 
         public static ObservableCollection<Plato> GetPlatosFromCategoria(Categoria categoria)
         {
-            var consulta = from p in contexto.platos
-                           where p.idCategoria == categoria.idCategoria
-                           orderby p.nombrePlato
-                           select p;
-
-            return new ObservableCollection<Plato>(consulta.ToList());
+            return new ObservableCollection<Plato>(categoria.platos);
         }
 
-        public static ObservableCollection<Plato> GetIngredientesFromPlato(Plato plato)
+        public static ObservableCollection<Ingrediente> GetIngredientesFromPlato(Plato plato)
         {
-            var consulta = from i in contexto.ingredientes
-                           where i.idPlato == plato.idPlato
-                           orderby i.nombreIngrediente
-                           select i;
-
-            return new ObservableCollection<Plato>(consulta.ToList());
+            return new ObservableCollection<Ingrediente>(plato.ingredientes);
         }
 
         public static ObservableCollection<Plato> GetPlatosFromPedido(Pedido pedido)
         {
-            var consulta = from p in contexto.pedidos
+            var consulta = from p in contexto.platosPorPedido
                            where p.idPedido == pedido.idPedido
-                           select p;
+                           select p.platos;
 
-            return new ObservableCollection<Plato>(consulta.ToList());
+            return new ObservableCollection<Plato>(consulta);
         }
 
 
 
         public static int ActualizarBBDD()
         {
-            return 0;
+            return contexto.SaveChanges();
         }
 
     }
