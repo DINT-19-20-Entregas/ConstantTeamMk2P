@@ -96,7 +96,7 @@ namespace ClientApp.Service
 
 
 
-
+        
         public static ObservableCollection<Plato> GetPlatosFromCategoria(Categoria categoria)
         {
             return new ObservableCollection<Plato>(categoria.platos);
