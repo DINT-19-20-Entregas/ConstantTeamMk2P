@@ -4,11 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e0f21d671579405b8733ee1588036582" Name="Diagram1" ZoomLevel="86">
-        <EntityTypeShape EntityType="RestauranteConstanTeamModel.categorias" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestauranteConstanTeamModel.ingredientes" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestauranteConstanTeamModel.pedidos" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestauranteConstanTeamModel.platos" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+      <Diagram DiagramId="3725f5a0b87d411ba00a2d722d8d89db" Name="Diagram1">
+        <EntityTypeShape EntityType="RestauranteConstanTeamModel.Categoria" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteConstanTeamModel.Ingrediente" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteConstanTeamModel.Pedido" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteConstanTeamModel.Plato" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="RestauranteConstanTeamModel.platosPorPedido" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
         <AssociationConnector Association="RestauranteConstanTeamModel.FK__platos__idCatego__4D94879B" ManuallyRouted="false" />
         <AssociationConnector Association="RestauranteConstanTeamModel.FK__platosPor__idPed__59063A47" ManuallyRouted="false" />
