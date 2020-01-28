@@ -5,9 +5,62 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClientApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <TextBlock Text="Hola funciona el commit desde mi cuenta"/>
+        Title="MainWindow" Height="720" Width="1280" Background="#FF30012F">
+    <Window.Resources>
+        <ControlTemplate x:Key="ComenzarPedidoButtonTemplate" TargetType="{x:Type Button}">
+            <Border CornerRadius="60" x:Name="border" BorderBrush="#FFFE202F" BorderThickness="{TemplateBinding BorderThickness}" Background="#FF61002E" SnapsToDevicePixels="True">
+                <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsDefaulted" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#FFB0002F"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FFFE202F"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#FFFE202F"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FFFE202F"/>
+                </Trigger>
+                <Trigger Property="ToggleButton.IsChecked" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#FFBCDDEE"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FF245A83"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" TargetName="border" Value="#FFF4F4F4"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FFADB2B5"/>
+                    <Setter Property="Foreground" Value="#FF838383"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <Style x:Key="FuenteYTamano" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="/ClientApp;component/Assets/#Sumida Script DEMO"/>
+            <Setter Property="FontSize" Value="100"/>
+        </Style>
         
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.75*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <TextBlock Style="{StaticResource FuenteYTamano}" Margin="300,20,0,0" >
+                <Run Foreground="#FFB0002F">Bienvenidos</Run>
+                <Run Foreground="#fe202f">A</Run>
+            </TextBlock>
+            <TextBlock Style="{StaticResource FuenteYTamano}" Margin="0,0,300,0"  HorizontalAlignment="Right">
+                <Run Foreground="#fe202f">ApiRest</Run>
+                <Run Foreground="#b0002f">aurant</Run>
+            </TextBlock>
+        </StackPanel>
+
+        <Button Grid.Row="1" Content="Comenzar Pedido" Margin="50" TextBlock.FontSize="100" TextBlock.FontFamily="/ClientApp;component/Assets/#Sumida Script DEMO" Template="{DynamicResource ComenzarPedidoButtonTemplate}"/>
     </Grid>
 </Window>

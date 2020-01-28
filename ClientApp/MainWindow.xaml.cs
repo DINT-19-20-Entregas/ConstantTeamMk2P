@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using ClientApp.View;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -23,6 +24,8 @@ namespace ClientApp
         public MainWindow()
         {
             InitializeComponent();
+            Categorias ip = new Categorias();
+            ip.Show();
         }
     }
 }
