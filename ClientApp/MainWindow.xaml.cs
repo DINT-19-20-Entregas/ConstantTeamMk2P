@@ -1,10 +1,13 @@
 ﻿using System;
+using ClientApp.Model;
+using ClientApp.ViewModel;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using ClientApp.View;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -22,7 +25,17 @@ namespace ClientApp
     {
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent();            
+        }
+
+        private void CargarCategoriasCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            MainWindowVM.CargarCategorias();
+        }
+
+        private void CargarCategoriasCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
         }
     }
 }
