@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClientApp.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,7 @@ namespace ClientApp.View
     /// </summary>
     public partial class InfoPlato : Window
     {
-        public InfoPlato()
+        public InfoPlato(Plato plato, Pedido pedido)
         {
             InitializeComponent();
         }

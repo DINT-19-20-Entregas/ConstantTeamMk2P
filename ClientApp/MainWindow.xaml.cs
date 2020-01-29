@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ClientApp.Service;
 
 namespace ClientApp
 {
@@ -25,7 +26,8 @@ namespace ClientApp
     {
         public MainWindow()
         {
-            InitializeComponent();            
+            InitializeComponent();
+            //BBDDService.CargarBD();
         }
 
         private void CargarCategoriasCommand_Executed(object sender, ExecutedRoutedEventArgs e)
