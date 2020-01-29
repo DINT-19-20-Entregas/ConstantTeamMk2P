@@ -38,8 +38,8 @@ namespace ClientApp.ViewModel
             {
                 Tile t = new Tile();
                 t.Background = Brushes.Red;
-                t.Height = 260;
-                t.Width = 260;
+                t.Height = 289;
+                t.Width = 289;
                 t.Margin = new Thickness(15);
                 t.Command = CustomCommands.CargarPlatos;
                 StackPanel sp = new StackPanel();

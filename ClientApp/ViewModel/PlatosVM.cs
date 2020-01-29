@@ -33,8 +33,8 @@ namespace ClientApp.ViewModel
             {
                 Tile t = new Tile();
                 t.Background = Brushes.Red;
-                t.Height = 260;
-                t.Width = 260;
+                t.Height = 289;
+                t.Width = 289;
                 t.Margin = new Thickness(15);
                 t.Command = CustomCommands.CargarInfoPlato;
                 StackPanel sp = new StackPanel();
@@ -42,6 +42,7 @@ namespace ClientApp.ViewModel
                 i.Width = 200;
                 TextBlock tb = new TextBlock();
                 tb.Text = item.nombrePlato;
+                tb.Style = Application.Current.FindResource("FuenteYTamano") as Style;
                 sp.Children.Add(i);
                 sp.Children.Add(tb);
                 t.Content = sp;
@@ -55,9 +56,9 @@ namespace ClientApp.ViewModel
         public void CargarInfoPlato(int index)
         {
             InfoPlato iP;
-            //if (platos.Count > 0)
-            //    iP = new InfoPlato(platos[index], pedido);
-            //else
+            if (platos.Count > 0)
+                iP = new InfoPlato(platos[index], pedido);
+            else
                 iP = new InfoPlato(new Plato(), pedido);
             iP.Show();
         }

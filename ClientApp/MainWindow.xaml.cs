@@ -27,7 +27,7 @@ namespace ClientApp
         public MainWindow()
         {
             InitializeComponent();
-            //BBDDService.CargarBD();
+            BBDDService.CargarBD();
         }
 
         private void CargarCategoriasCommand_Executed(object sender, ExecutedRoutedEventArgs e)

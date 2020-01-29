@@ -66,18 +66,20 @@
     <Grid>
         <ScrollViewer Margin="40" VerticalScrollBarVisibility="Hidden">
             <WrapPanel Background="Yellow" x:Name="ContenedorCategorias">
-                <Controls:Tile Background="Red" Height="260" Width="260" Margin="15" Command="comands:CustomCommands.CargarPlatos">
+                <Controls:Tile Background="Red" Height="289" Width="289" Margin="15" Command="comands:CustomCommands.CargarPlatos">
                     <StackPanel>
                         <Image Width="200" Source="../Assets/Hamborguesa.png"/>
                         <TextBlock Style="{StaticResource FuenteYTamano}" Text="HAMBORGUESAS"/>
                     </StackPanel>
                 </Controls:Tile>
+                
+                
             </WrapPanel>
         </ScrollViewer>
         <Controls:Tile HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="65" Margin="-40,0,0,-12" Command="comands:CustomCommands.Retroceder">
             <Image Source="../Assets/Retroceso.png"/>
         </Controls:Tile>
-        <Border x:Name="stkEasyLocatePanel" Background="Green" Height="681" Width="225" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,-200,0" >
+        <Border x:Name="stkEasyLocatePanel" Background="Green" Height="770" Width="225" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,-200,0" >
             <DockPanel>
                 <ToggleButton Width="25" Background="Transparent" Content="&lt;&lt;" IsChecked="False" Template="{DynamicResource ToggleButtonPedidoPanel}" BorderThickness="0">
                     <ToggleButton.Triggers>

@@ -23,14 +23,9 @@ namespace ClientApp.Service
             contexto.platosPorPedido.Load();
         }
 
-        //public static void CargarBD()
-        //{
-        //    contexto.pedidos.Load();
-        //    contexto.platos.Load();
-        //    contexto.categorias.Load();
-        //    contexto.ingredientes.Load();
-        //    contexto.platosPorPedido.Load();
-        //}
+        public static void CargarBD()
+        {            
+        }
 
         // CONSULTAR TODOS LOS REGISTROS DE LAS TABLAS
         public static ObservableCollection<Categoria> GetCategorias()
