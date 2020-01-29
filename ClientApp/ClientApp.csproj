@@ -83,6 +83,7 @@
     <Compile Include="Model\Categoria.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\CustomCommands.cs" />
     <Compile Include="Model\Ingrediente.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -111,12 +112,18 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Service\BBDDService.cs" />
+    <Compile Include="ViewModel\CategoriasVM.cs" />
     <Compile Include="ViewModel\InfoPlatoVM.cs" />
+    <Compile Include="ViewModel\MainWindowVM.cs" />
+    <Compile Include="ViewModel\PlatosVM.cs" />    
     <Compile Include="View\Categorias.xaml.cs">
       <DependentUpon>Categorias.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\InfoPlato.xaml.cs">
       <DependentUpon>InfoPlato.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Platos.xaml.cs">
+      <DependentUpon>Platos.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -135,6 +142,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\InfoPlato.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Platos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

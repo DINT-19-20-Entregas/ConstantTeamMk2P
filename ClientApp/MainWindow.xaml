@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClientApp"
+        xmlns:comands="clr-namespace:ClientApp.Model"
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1280" Background="#FF30012F">
     <Window.Resources>
@@ -41,6 +42,12 @@
         </Style>
         
     </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding
+            Command="comands:CustomCommands.CargarCategorias"
+            Executed="CargarCategoriasCommand_Executed"
+            CanExecute="CargarCategoriasCommand_CanExecute"/>
+    </Window.CommandBindings>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -60,7 +67,6 @@
                 <Run Foreground="#b0002f">aurant</Run>
             </TextBlock>
         </StackPanel>
-
-        <Button Grid.Row="1" Content="Comenzar Pedido" Margin="50" TextBlock.FontSize="100" TextBlock.FontFamily="/ClientApp;component/Assets/#Sumida Script DEMO" Template="{DynamicResource ComenzarPedidoButtonTemplate}"/>
+        <Button Command="comands:CustomCommands.CargarCategorias" Grid.Row="1" Content="Comenzar Pedido" Margin="50" TextBlock.FontSize="100" TextBlock.FontFamily="/ClientApp;component/Assets/#Sumida Script DEMO" Template="{DynamicResource ComenzarPedidoButtonTemplate}"/>
     </Grid>
 </Window>

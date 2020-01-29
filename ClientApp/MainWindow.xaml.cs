@@ -1,4 +1,6 @@
 ﻿using System;
+using ClientApp.Model;
+using ClientApp.ViewModel;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,9 +25,18 @@ namespace ClientApp
     {
         public MainWindow()
         {
-            InitializeComponent();
-            Categorias ip = new Categorias();
-            ip.Show();
+
+            InitializeComponent();            
+        }
+
+        private void CargarCategoriasCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            MainWindowVM.CargarCategorias();
+        }
+
+        private void CargarCategoriasCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
         }
     }
 }
