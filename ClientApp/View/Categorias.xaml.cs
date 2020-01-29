@@ -60,5 +60,15 @@ namespace ClientApp.View
         {
             e.CanExecute = true;
         }
+
+        private void CargarCuentaCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            VM.CargarCuenta();
+        }
+
+        private void CargarCuentaCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
     }
 }

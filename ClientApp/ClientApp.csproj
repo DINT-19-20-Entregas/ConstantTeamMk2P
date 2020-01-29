@@ -109,11 +109,15 @@
     </Compile>
     <Compile Include="Service\BBDDService.cs" />
     <Compile Include="ViewModel\CategoriasVM.cs" />
+    <Compile Include="ViewModel\CuentaVM.cs" />
     <Compile Include="ViewModel\InfoPlatoVM.cs" />
     <Compile Include="ViewModel\MainWindowVM.cs" />
     <Compile Include="ViewModel\PlatosVM.cs" />
     <Compile Include="View\Categorias.xaml.cs">
       <DependentUpon>Categorias.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Cuenta.xaml.cs">
+      <DependentUpon>Cuenta.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\InfoPlato.xaml.cs">
       <DependentUpon>InfoPlato.xaml</DependentUpon>
@@ -134,6 +138,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\Categorias.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Cuenta.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
