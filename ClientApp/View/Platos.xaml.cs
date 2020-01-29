@@ -36,7 +36,7 @@ namespace ClientApp.View
         private void CargarInfoPlatoCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             //int.Parse(((Tile)sender).Tag.ToString())
-            VM.CargarInfoPlato(1);
+            VM.CargarInfoPlato(int.Parse(((Tile)e.OriginalSource).Tag.ToString()));
         }
 
         private void CargarInfoPlatoCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
