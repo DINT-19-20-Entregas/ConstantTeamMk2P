@@ -9,7 +9,7 @@
         <EntityTypeShape EntityType="RestauranteConstanTeamModel.Ingrediente" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="RestauranteConstanTeamModel.Pedido" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="RestauranteConstanTeamModel.Plato" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestauranteConstanTeamModel.platosPorPedido" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteConstanTeamModel.PlatosPorPedido" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
         <AssociationConnector Association="RestauranteConstanTeamModel.FK__platos__idCatego__4D94879B" ManuallyRouted="false" />
         <AssociationConnector Association="RestauranteConstanTeamModel.FK__platosPor__idPed__59063A47" ManuallyRouted="false" />
         <AssociationConnector Association="RestauranteConstanTeamModel.FK__platosPor__idPla__5812160E" ManuallyRouted="false" />

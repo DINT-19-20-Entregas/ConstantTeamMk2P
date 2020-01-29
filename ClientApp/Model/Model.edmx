@@ -185,7 +185,7 @@
           <NavigationProperty Name="platosPorPedido" Relationship="Self.FK__platosPor__idPla__5812160E" FromRole="platos" ToRole="platosPorPedido" />
           <NavigationProperty Name="ingredientes" Relationship="Self.ingredientesPorPlato" FromRole="platos" ToRole="ingredientes" />
         </EntityType>
-        <EntityType Name="platosPorPedido">
+        <EntityType Name="PlatosPorPedido">
           <Key>
             <PropertyRef Name="idPedido" />
             <PropertyRef Name="idPlato" />
@@ -210,7 +210,7 @@
         </Association>
         <Association Name="FK__platosPor__idPed__59063A47">
           <End Role="pedidos" Type="RestauranteConstanTeamModel.Pedido" Multiplicity="1" />
-          <End Role="platosPorPedido" Type="Self.platosPorPedido" Multiplicity="*" />
+          <End Role="platosPorPedido" Type="RestauranteConstanTeamModel.PlatosPorPedido" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="pedidos">
               <PropertyRef Name="idPedido" />
@@ -222,7 +222,7 @@
         </Association>
         <Association Name="FK__platosPor__idPla__5812160E">
           <End Role="platos" Type="RestauranteConstanTeamModel.Plato" Multiplicity="1" />
-          <End Role="platosPorPedido" Type="Self.platosPorPedido" Multiplicity="*" />
+          <End Role="platosPorPedido" Type="RestauranteConstanTeamModel.PlatosPorPedido" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="platos">
               <PropertyRef Name="idPlato" />
@@ -241,7 +241,7 @@
           <EntitySet Name="ingredientes" EntityType="RestauranteConstanTeamModel.Ingrediente" />
           <EntitySet Name="pedidos" EntityType="RestauranteConstanTeamModel.Pedido" />
           <EntitySet Name="platos" EntityType="RestauranteConstanTeamModel.Plato" />
-          <EntitySet Name="platosPorPedido" EntityType="Self.platosPorPedido" />
+          <EntitySet Name="platosPorPedido" EntityType="RestauranteConstanTeamModel.PlatosPorPedido" />
           <AssociationSet Name="FK__platos__idCatego__4D94879B" Association="Self.FK__platos__idCatego__4D94879B">
             <End Role="categorias" EntitySet="categorias" />
             <End Role="platos" EntitySet="platos" />
@@ -302,7 +302,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="platosPorPedido">
-            <EntityTypeMapping TypeName="RestauranteConstanTeamModel.platosPorPedido">
+            <EntityTypeMapping TypeName="RestauranteConstanTeamModel.PlatosPorPedido">
               <MappingFragment StoreEntitySet="platosPorPedido">
                 <ScalarProperty Name="idPedido" ColumnName="idPedido" />
                 <ScalarProperty Name="idPlato" ColumnName="idPlato" />
