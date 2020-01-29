@@ -45,10 +45,10 @@ namespace ClientApp.ViewModel
                 StackPanel sp = new StackPanel();
                 Image i = new Image();
                 i.Width = 200;
-                //i.Source = new BitmapImage(new Uri(@"./Assets/Hamborguesa.png"));
+                //i.Source = new BitmapImage(new Uri(@"../Assets/Hamborguesa.png"));
                 TextBlock tb = new TextBlock();
                 tb.Text = item.nombreCategoria;
-                //tb.Style = Application.Current.FindResource("FuenteYTamano") as Style;
+                tb.Style = Application.Current.FindResource("FuenteYTamano") as Style;
                 sp.Children.Add(i);
                 sp.Children.Add(tb);
                 t.Content = sp;

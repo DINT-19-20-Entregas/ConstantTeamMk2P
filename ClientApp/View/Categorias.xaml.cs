@@ -43,7 +43,7 @@ namespace ClientApp.View
         private void CargarPlatosCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             //int.Parse(((Tile)sender).Tag.ToString())
-            VM.CargarPlatos(1);
+            VM.CargarPlatos(int.Parse(((Tile)e.OriginalSource).Tag.ToString()));
         }
 
         private void CargarPlatosCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
