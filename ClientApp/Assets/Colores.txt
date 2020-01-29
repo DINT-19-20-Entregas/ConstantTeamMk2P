@@ -1,0 +1,6 @@
+Color Reference.
+
+Rojo:			#fe202f   #FFFE202F
+RojoVino:		#b0002f   #FFB0002F
+RojoMasVino:	#61002e	  #FF61002E
+Kaisa:			#30012f   #FF30012F
