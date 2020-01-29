@@ -59,5 +59,12 @@ namespace ClientApp.Model
             typeof(CustomCommands),
             null
         );
+
+        public static readonly RoutedUICommand AñadirPlato = new RoutedUICommand
+            (
+                "AñadirPlato",
+                "AñadirPlato",
+                typeof(CustomCommands)
+            );
     }
 }

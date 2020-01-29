@@ -29,6 +29,6 @@ namespace ClientApp.Model
         public virtual DbSet<Ingrediente> ingredientes { get; set; }
         public virtual DbSet<Pedido> pedidos { get; set; }
         public virtual DbSet<Plato> platos { get; set; }
-        public virtual DbSet<platosPorPedido> platosPorPedido { get; set; }
+        public virtual DbSet<PlatosPorPedido> platosPorPedido { get; set; }
     }
 }

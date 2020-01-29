@@ -12,7 +12,7 @@ namespace ClientApp.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class platosPorPedido
+    public partial class PlatosPorPedido
     {
         public int idPedido { get; set; }
         public int idPlato { get; set; }

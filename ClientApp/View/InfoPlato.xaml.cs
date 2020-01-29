@@ -1,4 +1,5 @@
 ﻿using ClientApp.Model;
+using ClientApp.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,30 @@ namespace ClientApp.View
         public InfoPlato(Plato plato, Pedido pedido)
         {
             InitializeComponent();
+            this.DataContext = new InfoPlatoVM(plato,pedido);
+            ListaIngredientes.DataContext = (this.DataContext as InfoPlatoVM).listaIngredientes;
+            PrecioPlatoTextBlock.DataContext = (this.DataContext as InfoPlatoVM).plato;
+        }
+
+        private void AñadirPlato_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            (this.DataContext as InfoPlatoVM).AñadirPlatoAPedido();
+            Close();
+        }
+
+        private void AñadirPlato_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+           e.CanExecute = int.Parse(CantidadTextBox.Text) > 0;
+        }
+
+        private void RetrocederCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void RetrocederCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
         }
     }
 }

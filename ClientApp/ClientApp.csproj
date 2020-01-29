@@ -104,7 +104,7 @@
     <Compile Include="Model\Plato.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\platosPorPedido.cs">
+    <Compile Include="Model\PlatosPorPedido.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Service\BBDDService.cs" />

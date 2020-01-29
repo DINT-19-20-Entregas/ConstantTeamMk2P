@@ -17,7 +17,7 @@ namespace ClientApp.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Pedido()
         {
-            this.platosPorPedido = new HashSet<platosPorPedido>();
+            this.platosPorPedido = new HashSet<PlatosPorPedido>();
         }
     
         public int idPedido { get; set; }
@@ -25,6 +25,6 @@ namespace ClientApp.Model
         public System.DateTime Fecha { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<platosPorPedido> platosPorPedido { get; set; }
+        public virtual ICollection<PlatosPorPedido> platosPorPedido { get; set; }
     }
 }

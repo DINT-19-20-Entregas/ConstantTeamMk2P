@@ -17,7 +17,7 @@ namespace ClientApp.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Plato()
         {
-            this.platosPorPedido = new HashSet<platosPorPedido>();
+            this.platosPorPedido = new HashSet<PlatosPorPedido>();
             this.ingredientes = new HashSet<Ingrediente>();
         }
     
@@ -29,7 +29,7 @@ namespace ClientApp.Model
     
         public virtual Categoria categoria { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<platosPorPedido> platosPorPedido { get; set; }
+        public virtual ICollection<PlatosPorPedido> platosPorPedido { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ingrediente> ingredientes { get; set; }
     }

@@ -4,44 +4,62 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClientApp.View"
+        xmlns:model="clr-namespace:ClientApp.Model"
         mc:Ignorable="d"
         Title="InfoPlato" Height="768" Width="1366"
         WindowState="Maximized" WindowStyle="None">
+
+    <Window.CommandBindings>
+        <CommandBinding 
+            Command="model:CustomCommands.AñadirPlato"
+            Executed="AñadirPlato_Executed"
+            CanExecute="AñadirPlato_CanExecute"
+            />
+        <CommandBinding
+            Command="model:CustomCommands.Retroceder"
+            Executed="RetrocederCommand_Executed"
+            CanExecute="RetrocederCommand_CanExecute"/>
+        
+    </Window.CommandBindings>
     <DockPanel>
         <Border DockPanel.Dock="Top" BorderBrush="Black" BorderThickness="0,0,0,2" Padding="5">
             <TextBlock FontSize="35"  TextAlignment="Center" >Hamburguesa de pollo</TextBlock>
         </Border>
         
         <DockPanel DockPanel.Dock="Bottom" Height="70">
-            <Button Width="120" DockPanel.Dock="Left" FontSize="20">Atrás</Button>
+            <Button Width="120" DockPanel.Dock="Left" FontSize="20" Command="model:CustomCommands.Retroceder">Atrás</Button>
             <Button Width="120" DockPanel.Dock="Right" FontSize="20">Añadir</Button>
-            <TextBlock FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Run>Total : </Run>
-                <Run>X€ </Run>
+            <TextBlock  x:Name="PrecioTotalTextBlock" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center">
+                Total : 31.80 €
             </TextBlock>
         </DockPanel>
         <DockPanel >
             <Border Margin="20" BorderBrush="Black" BorderThickness="2" CornerRadius="5">
-                <Image Width="400" ></Image>
+                <Grid>
+                    <Image Width="400" Height="200"></Image>
+                    <TextBlock x:Name="PrecioPlatoTextBlock" Text="{Binding precio}"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" FontSize="20"></TextBlock>
+                </Grid>
+                
             </Border>
             <DockPanel Margin="50,20,50,0">
 
                 <Border BorderBrush="Black" BorderThickness="2" CornerRadius="5" DockPanel.Dock="Top">
                     <StackPanel>
                         <TextBlock FontSize="20" Background="Purple" TextAlignment="Center" >Ingredientes</TextBlock>
-                        <StackPanel>
-
-                            <TextBlock FontSize="15" TextAlignment="Center">Ingrediente 1</TextBlock>
-                            <TextBlock FontSize="15" TextAlignment="Center">Ingrediente 2</TextBlock>
-                            <TextBlock FontSize="15" TextAlignment="Center">Ingrediente 3</TextBlock>
-                            <TextBlock FontSize="15" TextAlignment="Center">Ingrediente 4</TextBlock>
-                        </StackPanel>
+                        <ItemsControl x:Name="ListaIngredientes" ItemsSource="{Binding}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock FontSize="15" TextAlignment="Center" Text="{Binding nombreIngrediente}"></TextBlock>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                            
+                        </ItemsControl>
                     </StackPanel>                    
                 </Border>
 
                 <StackPanel DockPanel.Dock="Bottom" VerticalAlignment="Center">
                     <TextBlock FontSize="20" TextAlignment="Center">Cantidad</TextBlock>
-                    <TextBlock FontSize="20" TextAlignment="Center">(Control + 5 - )</TextBlock>
+                    <TextBox x:Name="CantidadTextBox" Width="50"></TextBox>
                     
                 </StackPanel>
 
