@@ -62,6 +62,10 @@
             Command="comands:CustomCommands.Retroceder"
             Executed="RetrocederCommand_Executed"
             CanExecute="RetrocederCommand_CanExecute"/>
+        <CommandBinding
+            Command="comands:CustomCommands.CargarCuenta"
+            Executed="CargarCuentaCommand_Executed"
+            CanExecute="CargarCuentaCommand_CanExecute"/>
     </Window.CommandBindings>
     <Grid>
         <ScrollViewer Margin="40" VerticalScrollBarVisibility="Hidden">
@@ -102,7 +106,10 @@
                     </ToggleButton.Triggers>
                 </ToggleButton>
                 <TextBlock DockPanel.Dock="Top" Style="{StaticResource FuenteYTamano}" Text="Pedido" Margin="0,15,0,30"/>
-                <TextBlock DockPanel.Dock="Bottom" Style="{StaticResource FuenteYTamano}" Text="Total: 843,98€" Margin="0,15,0,15"/>
+                <Controls:Tile DockPanel.Dock="Bottom" Width="200" Height="80" Command="comands:CustomCommands.CargarCuenta">
+                    <TextBlock Style="{StaticResource FuenteYTamano}" Text="Total: 843,98€" Margin="0,15,0,15"/>
+                </Controls:Tile>
+                
                 <ItemsControl>
                     <DockPanel>
                         <TextBlock DockPanel.Dock="Left"  FontWeight="Bold">

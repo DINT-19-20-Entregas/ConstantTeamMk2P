@@ -73,5 +73,11 @@ namespace ClientApp.ViewModel
                 p = new Platos(new Categoria(), pedido);            
             p.Show();
         }
+
+        public void CargarCuenta()
+        {
+            Cuenta c = new Cuenta(pedido);
+            c.Show();
+        }
     }
 }

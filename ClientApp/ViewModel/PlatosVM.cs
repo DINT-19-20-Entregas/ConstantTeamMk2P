@@ -53,6 +53,12 @@ namespace ClientApp.ViewModel
             return tiles;
         }
 
+        public void CargarCuenta()
+        {
+            Cuenta c = new Cuenta(pedido);
+            c.Show();
+        }
+
         public void CargarInfoPlato(int index)
         {
             InfoPlato iP;

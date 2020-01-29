@@ -34,6 +34,28 @@ namespace ClientApp.Model
             null
         );
 
+        public static readonly RoutedUICommand Retroceder = new RoutedUICommand
+        (
+            "Retroceder",
+            "Retroceder",
+            typeof(CustomCommands),
+            null
+        );
+
+        public static readonly RoutedUICommand AñadirPlato = new RoutedUICommand
+            (
+                "AñadirPlato",
+                "AñadirPlato",
+                typeof(CustomCommands)
+            );
+
+        public static readonly RoutedUICommand CargarCuenta = new RoutedUICommand
+        (
+            "CargarCuenta",
+            "CargarCuenta",
+            typeof(CustomCommands),
+            null
+        );
 
         //Commandos no implementados
         public static readonly RoutedUICommand SeleccionarCategoria = new RoutedUICommand
@@ -50,21 +72,8 @@ namespace ClientApp.Model
             "SeleccionarPlato",
             typeof(CustomCommands),
             null
-        );
+        );        
 
-        public static readonly RoutedUICommand Retroceder = new RoutedUICommand
-        (
-            "Retroceder",
-            "Retroceder",
-            typeof(CustomCommands),
-            null
-        );
-
-        public static readonly RoutedUICommand AñadirPlato = new RoutedUICommand
-            (
-                "AñadirPlato",
-                "AñadirPlato",
-                typeof(CustomCommands)
-            );
+        
     }
 }
