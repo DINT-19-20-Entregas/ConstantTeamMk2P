@@ -67,7 +67,6 @@
                 <Run Foreground="#b0002f">aurant</Run>
             </TextBlock>
         </StackPanel>
-
         <Button Command="comands:CustomCommands.CargarCategorias" Grid.Row="1" Content="Comenzar Pedido" Margin="50" TextBlock.FontSize="100" TextBlock.FontFamily="/ClientApp;component/Assets/#Sumida Script DEMO" Template="{DynamicResource ComenzarPedidoButtonTemplate}"/>
     </Grid>
 </Window>

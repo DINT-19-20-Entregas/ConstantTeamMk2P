@@ -25,6 +25,7 @@ namespace ClientApp
     {
         public MainWindow()
         {
+
             InitializeComponent();            
         }
 
