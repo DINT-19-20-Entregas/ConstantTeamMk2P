@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:ClientApp.View"
         xmlns:model="clr-namespace:ClientApp.Model"
         mc:Ignorable="d"
-        Title="InfoPlato" Height="450" Width="800">
+        Title="InfoPlato" Height="768" Width="1366"
+        WindowState="Maximized" WindowStyle="None">
 
     <Window.CommandBindings>
         <CommandBinding 
@@ -20,7 +21,6 @@
             CanExecute="RetrocederCommand_CanExecute"/>
         
     </Window.CommandBindings>
-
     <DockPanel>
         <Border DockPanel.Dock="Top" BorderBrush="Black" BorderThickness="0,0,0,2" Padding="5">
             <TextBlock FontSize="35"  TextAlignment="Center" >Hamburguesa de pollo</TextBlock>

@@ -4,6 +4,10 @@
              xmlns:local="clr-namespace:ClientApp"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style x:Key="FuenteYTamano" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="/ClientApp;component/Assets/#Sumida Script DEMO"/>
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
     </Application.Resources>
 </Application>

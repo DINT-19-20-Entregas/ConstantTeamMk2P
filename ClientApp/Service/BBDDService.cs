@@ -23,6 +23,10 @@ namespace ClientApp.Service
             contexto.platosPorPedido.Load();
         }
 
+        public static void CargarBD()
+        {            
+        }
+
         // CONSULTAR TODOS LOS REGISTROS DE LAS TABLAS
         public static ObservableCollection<Categoria> GetCategorias()
         {

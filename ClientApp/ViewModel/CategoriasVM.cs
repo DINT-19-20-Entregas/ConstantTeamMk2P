@@ -38,17 +38,17 @@ namespace ClientApp.ViewModel
             {
                 Tile t = new Tile();
                 t.Background = Brushes.Red;
-                t.Height = 260;
-                t.Width = 260;
+                t.Height = 289;
+                t.Width = 289;
                 t.Margin = new Thickness(15);
                 t.Command = CustomCommands.CargarPlatos;
                 StackPanel sp = new StackPanel();
                 Image i = new Image();
                 i.Width = 200;
-                //i.Source = new BitmapImage(new Uri(@"./Assets/Hamborguesa.png"));
+                //i.Source = new BitmapImage(new Uri(@"../Assets/Hamborguesa.png"));
                 TextBlock tb = new TextBlock();
                 tb.Text = item.nombreCategoria;
-                //tb.Style = Application.Current.FindResource("FuenteYTamano") as Style;
+                tb.Style = Application.Current.FindResource("FuenteYTamano") as Style;
                 sp.Children.Add(i);
                 sp.Children.Add(tb);
                 t.Content = sp;
