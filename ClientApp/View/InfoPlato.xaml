@@ -23,47 +23,54 @@
     </Window.CommandBindings>
     <DockPanel>
         <Border DockPanel.Dock="Top" BorderBrush="Black" BorderThickness="0,0,0,2" Padding="5">
-            <TextBlock FontSize="35"  TextAlignment="Center" >Hamburguesa de pollo</TextBlock>
+            <TextBlock x:Name="NombrePlatoTextBlock" FontSize="35"  TextAlignment="Center" Text="{Binding nombrePlato}"></TextBlock>
         </Border>
         
-        <DockPanel DockPanel.Dock="Bottom" Height="70">
-            <Button Width="120" DockPanel.Dock="Left" FontSize="20" Command="model:CustomCommands.Retroceder">Atrás</Button>
-            <Button Width="120" DockPanel.Dock="Right" FontSize="20">Añadir</Button>
-            <TextBlock  x:Name="PrecioTotalTextBlock" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <DockPanel DockPanel.Dock="Bottom" Height="100">
+            <Button Width="170" DockPanel.Dock="Left" FontSize="30" Command="model:CustomCommands.Retroceder">Atrás</Button>
+            <Button Width="170" DockPanel.Dock="Right" FontSize="30" Command="model:CustomCommands.AñadirPlato">Añadir</Button>
+            <TextBlock  x:Name="PrecioTotalTextBlock" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center">
                 Total : 31.80 €
             </TextBlock>
         </DockPanel>
-        <DockPanel >
-            <Border Margin="20" BorderBrush="Black" BorderThickness="2" CornerRadius="5">
-                <Grid>
-                    <Image Width="400" Height="200"></Image>
-                    <TextBlock x:Name="PrecioPlatoTextBlock" Text="{Binding precio}"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" FontSize="20"></TextBlock>
-                </Grid>
+        <DockPanel>                   
                 
+            <Border Margin="20" BorderBrush="Black" BorderThickness="2" CornerRadius="5" Width="600" HorizontalAlignment="Left">
+                <Grid>
+                    <Image></Image>
+                    <TextBlock x:Name="PrecioPlatoTextBlock" Text="{Binding precio}"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" FontSize="40"></TextBlock>
+                </Grid>
             </Border>
-            <DockPanel Margin="50,20,50,0">
-
-                <Border BorderBrush="Black" BorderThickness="2" CornerRadius="5" DockPanel.Dock="Top">
+            <DockPanel Margin="50,0,0,0">                
+                <StackPanel VerticalAlignment="Center" DockPanel.Dock="Right">
+                    <TextBlock FontSize="50" TextAlignment="Center">Cantidad</TextBlock>
                     <StackPanel>
-                        <TextBlock FontSize="20" Background="Purple" TextAlignment="Center" >Ingredientes</TextBlock>
+                        <Button x:Name="PlusButton" FontSize="50" Width="60" Height="60" Padding="5" Click="PlusButton_Click">
+                            <Image Source="../Assets/plus.ico"></Image>
+                        </Button>
+                        <TextBlock DataContext="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}" Text="{Binding cantidadPlatos}"  x:Name="CantidadTextBlock" FontSize="35"  Width="50" Height="50" TextAlignment="Center"></TextBlock>
+                        <Button x:Name="MinusButton" FontSize="50" Width="60" Height="60" Padding="5" Click="MinusButton_Click">
+                            <Image Source="../Assets/minus.ico"></Image>
+                        </Button>
+                    </StackPanel>
+                    </StackPanel>
+
+                <Border BorderBrush="Black" BorderThickness="2" CornerRadius="5" Margin="20">
+                    <StackPanel>
+                        <TextBlock FontSize="40" Background="Purple" TextAlignment="Center" >Ingredientes</TextBlock>
                         <ItemsControl x:Name="ListaIngredientes" ItemsSource="{Binding}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <TextBlock FontSize="15" TextAlignment="Center" Text="{Binding nombreIngrediente}"></TextBlock>
+                                    <TextBlock FontSize="20" TextAlignment="Center" Text="{Binding nombreIngrediente}"></TextBlock>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
-                            
+
                         </ItemsControl>
-                    </StackPanel>                    
+                    </StackPanel>
                 </Border>
-
-                <StackPanel DockPanel.Dock="Bottom" VerticalAlignment="Center">
-                    <TextBlock FontSize="20" TextAlignment="Center">Cantidad</TextBlock>
-                    <TextBox x:Name="CantidadTextBox" Width="50"></TextBox>
-                    
-                </StackPanel>
-
             </DockPanel>
+            
+            
         </DockPanel>
         
        

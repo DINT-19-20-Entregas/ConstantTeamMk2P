@@ -21,12 +21,16 @@ namespace ClientApp.View
     /// </summary>
     public partial class InfoPlato : Window
     {
+        private int cantidadPlatos = 0;
+
         public InfoPlato(Plato plato, Pedido pedido)
         {
             InitializeComponent();
             this.DataContext = new InfoPlatoVM(plato,pedido);
             ListaIngredientes.DataContext = (this.DataContext as InfoPlatoVM).listaIngredientes;
             PrecioPlatoTextBlock.DataContext = (this.DataContext as InfoPlatoVM).plato;
+            NombrePlatoTextBlock.DataContext = (this.DataContext as InfoPlatoVM).plato;
+            CantidadTextBlock.Text = cantidadPlatos.ToString();
         }
 
         private void AñadirPlato_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -37,7 +41,7 @@ namespace ClientApp.View
 
         private void AñadirPlato_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-           e.CanExecute = int.Parse(CantidadTextBox.Text) > 0;
+           e.CanExecute = cantidadPlatos > 0;
         }
 
         private void RetrocederCommand_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -48,6 +52,22 @@ namespace ClientApp.View
         private void RetrocederCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
+        }
+
+        private void PlusButton_Click(object sender, RoutedEventArgs e)
+        {
+            cantidadPlatos++;
+            CantidadTextBlock.Text = cantidadPlatos.ToString();
+        }
+
+        private void MinusButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (int.Parse(CantidadTextBlock.Text) > 0)
+            {
+                cantidadPlatos--;
+                CantidadTextBlock.Text = cantidadPlatos.ToString(); 
+            }
+                
         }
     }
 }

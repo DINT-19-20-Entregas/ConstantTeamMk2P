@@ -197,6 +197,8 @@
     <Resource Include="Assets\Colores.txt" />
     <Resource Include="Assets\Hamborguesa.png" />
     <Resource Include="Assets\Retroceso.png" />
+    <Resource Include="Assets\plus.ico" />
+    <Resource Include="Assets\minus.ico" />
     <Content Include="Model\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
