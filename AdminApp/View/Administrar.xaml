@@ -1,0 +1,94 @@
+﻿<Window x:Class="AdminApp.View.Administrar"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AdminApp.View"
+        mc:Ignorable="d"
+        Title="Administrar" Height="450" Width="800">
+    <TabControl>
+        <TabItem Header="Categorias" FontSize="30">
+            <DockPanel>
+                <DockPanel DockPanel.Dock="Left">
+                    <StackPanel DockPanel.Dock="Bottom">
+                        <Button x:Name="AñadirCategoriaButton" Click="AñadirCategoriaButton_Click">Añadir categoria</Button>
+                    </StackPanel>
+                    <ListBox x:Name="CategoriasListBox" ItemsSource="{Binding}"  Width="250">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding nombreCategoria}" FontSize="20"></TextBlock>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                </DockPanel>
+                <DockPanel LastChildFill="False" DataContext="{Binding ElementName=CategoriasListBox, Path=SelectedItem}">
+                    <DockPanel  DockPanel.Dock="Top">
+                        <StackPanel DockPanel.Dock="Left" Width="350">
+                            <StackPanel Margin="10" >
+                                <TextBlock FontSize="20">Id</TextBlock>
+                                <TextBox x:Name="IdCategoriaTextBox" Text="{Binding idCategoria}" IsEnabled="False"></TextBox>
+                            </StackPanel>
+                            <StackPanel Margin="10">
+                                <TextBlock FontSize="20">Nombre</TextBlock>
+                                <TextBox x:Name="NombreCategoriaTextBox" Text="{Binding nombreCategoria}" IsEnabled="False"></TextBox>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <Border BorderBrush="Black" BorderThickness="1.5" >
+                            <Image ></Image>
+                        </Border>
+                    </DockPanel>
+
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Bottom">
+                        <Button x:Name="EditarCategoriaButton" Margin="10" Padding="5" Click="EditarButton_Click">Editar</Button>
+                        <Button x:Name="EliminarCategoriaButton" Margin="10" Padding="5" Click="EliminarButton_Click">Eliminar</Button>
+                    </StackPanel>
+                </DockPanel>
+            </DockPanel>
+
+        </TabItem>
+        <TabItem Header="Platos" FontSize="30">
+            <DockPanel>
+                <DockPanel DockPanel.Dock="Left">
+                    <StackPanel DockPanel.Dock="Bottom">
+                        <Button x:Name="AñadirPlatoButton" Click="AñadirPlatoButton_Click">Añadir plato</Button>
+                    </StackPanel>
+                    <ListBox x:Name="PlatosListBox" ItemsSource="{Binding}"  Width="250">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding nombrePlato}" FontSize="20"></TextBlock>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                </DockPanel>
+                <DockPanel LastChildFill="False" DataContext="{Binding ElementName=PlatosListBox, Path=SelectedItem}">
+                    <DockPanel  DockPanel.Dock="Top">
+                        <StackPanel DockPanel.Dock="Left" Width="350">
+                            <StackPanel Margin="10" >
+                                <TextBlock FontSize="20">Id</TextBlock>
+                                <TextBox x:Name="IdPlatoTextBox" Text="{Binding idPlato}" IsEnabled="False"></TextBox>
+                            </StackPanel>
+                            <StackPanel Margin="10">
+                                <TextBlock FontSize="20">Nombre</TextBlock>
+                                <TextBox x:Name="NombrePlatoTextBox" Text="{Binding nombrePlato}" IsEnabled="False"></TextBox>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <Border BorderBrush="Black" BorderThickness="1.5" >
+                            <Image ></Image>
+                        </Border>
+                    </DockPanel>
+
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Bottom">
+                        <Button x:Name="EditarPlatoButton" Margin="10" Padding="5" Click="EditarPlatoButton_Click" >Editar</Button>
+                        <Button x:Name="EliminarPlatoButton" Margin="10" Padding="5" Click="EliminarPlatoButton_Click" >Eliminar</Button>
+                    </StackPanel>
+                </DockPanel>
+            </DockPanel>
+        </TabItem>
+    </TabControl>
+</Window>

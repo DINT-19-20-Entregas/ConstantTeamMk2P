@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AdminApp.Service;
+using AdminApp.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,25 @@ namespace AdminApp
         public MainWindow()
         {
             InitializeComponent();
+            BBDDService.CargarBD();
+        }
+
+        private void AbrirVentanaCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Button botonOrigen = (Button)e.OriginalSource;
+            if (botonOrigen.Name == "PedidosButton")
+            {
+
+            }
+            else
+            {
+                new Administrar().Show();
+            }
+        }
+
+        private void AbrirVentanaCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
         }
     }
 }
