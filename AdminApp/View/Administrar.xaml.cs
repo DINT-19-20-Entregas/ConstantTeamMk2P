@@ -62,5 +62,10 @@ namespace AdminApp.View
             Plato plato = PlatosListBox.SelectedItem as Plato;
             (this.DataContext as AdministrarVM).EliminarPlato(plato);
         }
+
+        private void GuardarCambiosButton_Click(object sender, RoutedEventArgs e)
+        {
+            (this.DataContext as AdministrarVM).GuardarCambios();
+        }
     }
 }

@@ -42,6 +42,7 @@
 
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Bottom">
+                        <Button x:Name="GuardarCategoriaButton" Margin="10" Padding="5" Click="GuardarCambiosButton_Click">Guardar</Button>
                         <Button x:Name="EditarCategoriaButton" Margin="10" Padding="5" Click="EditarButton_Click">Editar</Button>
                         <Button x:Name="EliminarCategoriaButton" Margin="10" Padding="5" Click="EliminarButton_Click">Eliminar</Button>
                     </StackPanel>
@@ -84,6 +85,7 @@
 
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Bottom">
+                        <Button x:Name="GuardarPlatoButton" Margin="10" Padding="5" Click="GuardarCambiosButton_Click" >Guardar</Button>
                         <Button x:Name="EditarPlatoButton" Margin="10" Padding="5" Click="EditarPlatoButton_Click" >Editar</Button>
                         <Button x:Name="EliminarPlatoButton" Margin="10" Padding="5" Click="EliminarPlatoButton_Click" >Eliminar</Button>
                     </StackPanel>

@@ -47,5 +47,10 @@ namespace AdminApp.ViewModel
         {
             BBDDService.DeletePlato(plato);
         }
+
+        public void GuardarCambios()
+        {
+            BBDDService.ActualizarBBDD();
+        }
     }
 }
