@@ -47,6 +47,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
@@ -70,6 +71,10 @@
     <Page Include="View\Administrar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DialogoNuevaCategoria.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -111,9 +116,13 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Service\BBDDService.cs" />
+    <Compile Include="Service\ImageConverter.cs" />
     <Compile Include="ViewModel\AdministrarVM.cs" />
     <Compile Include="View\Administrar.xaml.cs">
       <DependentUpon>Administrar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DialogoNuevaCategoria.xaml.cs">
+      <DependentUpon>DialogoNuevaCategoria.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
