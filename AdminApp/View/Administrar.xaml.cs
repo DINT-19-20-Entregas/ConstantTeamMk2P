@@ -1,7 +1,10 @@
 ﻿using AdminApp.Model;
+using AdminApp.Service;
 using AdminApp.ViewModel;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -93,6 +96,18 @@ namespace AdminApp.View
         {
             NombreCategoriaTextBox.IsEnabled = false;
             SeleccionarImagenButton.IsEnabled = false;
+        }
+
+        private void SeleccionarImagenButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Imagenes png(*.png)|*.png|All files (*.*)|*.*";
+            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            if (openFileDialog.ShowDialog() == true)
+            {
+                Categoria categoria = CategoriasListBox.SelectedItem as Categoria;
+                categoria.imagenCategoria = ImageConverter.ImageToBinary(openFileDialog.FileName);
+            }
         }
     }
 }

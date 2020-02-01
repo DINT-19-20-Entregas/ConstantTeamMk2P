@@ -32,7 +32,7 @@
                             <Border BorderBrush="Black" BorderThickness="1.5" Width="160" Height="160">
                                 <Image ></Image>
                             </Border>
-                            <Button x:Name="SeleccionarImagenButton" VerticalAlignment="Center" FontSize="15" Padding="5" Margin="10" IsEnabled="False">Seleccionar imagen</Button>
+                            <Button x:Name="SeleccionarImagenButton" VerticalAlignment="Center" FontSize="15" Padding="5" Margin="10" IsEnabled="False" Click="SeleccionarImagenButton_Click">Seleccionar imagen</Button>
                         </DockPanel>
                         
                     </StackPanel>
