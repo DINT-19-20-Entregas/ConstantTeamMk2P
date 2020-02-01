@@ -105,7 +105,7 @@ namespace AdminApp.View
             openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             if (openFileDialog.ShowDialog() == true)
             {
-                Categoria categoria = CategoriasListBox.SelectedItem as Categoria;
+                Categoria categoria = CategoriasListBox.SelectedItem as Categoria;                
                 categoria.imagenCategoria = ImageConverter.ImageToBinary(openFileDialog.FileName);
             }
         }
