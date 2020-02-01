@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AdminApp.Model;
+using AdminApp.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,33 @@ namespace AdminApp.View
     /// </summary>
     public partial class DialogoNuevaCategoria : Window
     {
-        public DialogoNuevaCategoria()
+        Categoria nuevaCategoria;
+        public DialogoNuevaCategoria(ref Categoria nuevaCategoria)
         {
             InitializeComponent();
+            this.nuevaCategoria = nuevaCategoria;
+        }
+
+        private void AceptarButton_Click(object sender, RoutedEventArgs e)
+        {
+            bool categoriaExiste = false;
+
+            foreach(Categoria c in (Owner.DataContext as AdministrarVM).categorias)
+            {
+                if (c.nombreCategoria == NombreCategoriaTextBox.Text)
+                    categoriaExiste = true;                    
+            }
+
+            if (categoriaExiste)
+                MessageBox.Show("La categoría ya existe", "Error al crear categoria", MessageBoxButton.OK, MessageBoxImage.Error);
+            else
+            {
+                nuevaCategoria.nombreCategoria = NombreCategoriaTextBox.Text;
+                (Owner.DataContext as AdministrarVM).AñadirCategoria(nuevaCategoria);                
+                Close();
+            }
+
+            
         }
     }
 }

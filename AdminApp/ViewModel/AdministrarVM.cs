@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace AdminApp.ViewModel
 {
@@ -20,26 +21,20 @@ namespace AdminApp.ViewModel
             platos = BBDDService.GetPlatos();
         }
 
-        public void AñadirCategoria()
+        public void AñadirCategoria(Categoria categoria)
         {
-            Categoria categoria = new Categoria();
-            categoria.idCategoria = 0;
-            categoria.nombreCategoria = "Nueva categoria";
-
             BBDDService.AddCategoria(categoria);
+            MessageBox.Show("Se ha añadido la categoría " + categoria.nombreCategoria, "Añadir categoría", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         public void EliminarCategoria(Categoria categoria)
-        {
+        {   
             BBDDService.DeleteCategoria(categoria);
+            MessageBox.Show("Se ha eliminado la categoría " + categoria.nombreCategoria, "Eliminar categoría", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
-        public void AñadirPlato()
+        public void AñadirPlato(Plato plato)
         {
-            Plato plato = new Plato();
-            plato.idCategoria = 0;
-            plato.nombrePlato = "Nueva plato";
-
             BBDDService.AddPlato(plato);
         }
 
@@ -50,7 +45,13 @@ namespace AdminApp.ViewModel
 
         public void GuardarCambios()
         {
+            MessageBox.Show("Se han guardado los cambios", "Guardar cambios", MessageBoxButton.OK, MessageBoxImage.Information);
             BBDDService.ActualizarBBDD();
+        }
+
+        public bool CategoriaVacia(Categoria categoria)
+        {
+            return categoria.platos.Count == 0;
         }
     }
 }

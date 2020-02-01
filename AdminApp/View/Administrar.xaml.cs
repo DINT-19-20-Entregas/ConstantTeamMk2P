@@ -31,30 +31,51 @@ namespace AdminApp.View
 
         private void AñadirCategoriaButton_Click(object sender, RoutedEventArgs e)
         {
-            (this.DataContext as AdministrarVM).AñadirCategoria();
+            Categoria nuevaCategoria = new Categoria();
+
+            DialogoNuevaCategoria dialogoNuevaCategoria = new DialogoNuevaCategoria(ref nuevaCategoria);
+            dialogoNuevaCategoria.Owner = this;
+            dialogoNuevaCategoria.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            dialogoNuevaCategoria.ShowDialog();            
         }
 
-        private void EditarButton_Click(object sender, RoutedEventArgs e)
+        private void EditarCategoriaButton_Click(object sender, RoutedEventArgs e)
         {
-            IdCategoriaTextBox.IsEnabled = true;
-            NombreCategoriaTextBox.IsEnabled = true;
+            if(CategoriasListBox.SelectedItem != null)
+            {
+                NombreCategoriaTextBox.IsEnabled = true;
+                SeleccionarImagenButton.IsEnabled = true;
+            }
+            
         }
 
-        private void EliminarButton_Click(object sender, RoutedEventArgs e)
+        private void EliminarCategoriaButton_Click(object sender, RoutedEventArgs e)
         {
             Categoria categoria = CategoriasListBox.SelectedItem as Categoria;
-            (this.DataContext as AdministrarVM).EliminarCategoria(categoria);
+            MessageBoxResult result = MessageBox.Show("¿Estas seguro de eliminar la categoría " + categoria.nombreCategoria + "?", "Eliminar categoría", MessageBoxButton.YesNo);
+            if(result == MessageBoxResult.Yes)
+            {
+                if((this.DataContext as AdministrarVM).CategoriaVacia(categoria))
+                    (this.DataContext as AdministrarVM).EliminarCategoria(categoria);
+                else
+                    MessageBox.Show("La categoría no esta vacía", "Eliminar categoría", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            
         }
 
         private void AñadirPlatoButton_Click(object sender, RoutedEventArgs e)
         {
-            (this.DataContext as AdministrarVM).AñadirPlato();
+            Plato nuevoPlato = new Plato();
+            (this.DataContext as AdministrarVM).AñadirPlato(nuevoPlato);
         }
 
         private void EditarPlatoButton_Click(object sender, RoutedEventArgs e)
         {
-            IdPlatoTextBox.IsEnabled = true;
-            NombrePlatoTextBox.IsEnabled = true;
+            if(PlatosListBox.SelectedItem != null)
+            {
+                NombrePlatoTextBox.IsEnabled = true;
+            }
+            
         }
 
         private void EliminarPlatoButton_Click(object sender, RoutedEventArgs e)
@@ -66,6 +87,12 @@ namespace AdminApp.View
         private void GuardarCambiosButton_Click(object sender, RoutedEventArgs e)
         {
             (this.DataContext as AdministrarVM).GuardarCambios();
+        }
+
+        private void CategoriasListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            NombreCategoriaTextBox.IsEnabled = false;
+            SeleccionarImagenButton.IsEnabled = false;
         }
     }
 }

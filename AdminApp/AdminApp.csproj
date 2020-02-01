@@ -71,6 +71,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\DialogoNuevaCategoria.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -114,6 +118,9 @@
     <Compile Include="ViewModel\AdministrarVM.cs" />
     <Compile Include="View\Administrar.xaml.cs">
       <DependentUpon>Administrar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DialogoNuevaCategoria.xaml.cs">
+      <DependentUpon>DialogoNuevaCategoria.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
