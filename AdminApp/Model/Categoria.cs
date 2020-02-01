@@ -22,6 +22,7 @@ namespace AdminApp.Model
     
         public int idCategoria { get; set; }
         public string nombreCategoria { get; set; }
+        public byte[] imagenCategoria { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Plato> platos { get; set; }

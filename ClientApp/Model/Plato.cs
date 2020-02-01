@@ -24,8 +24,8 @@ namespace ClientApp.Model
         public int idPlato { get; set; }
         public int idCategoria { get; set; }
         public string nombrePlato { get; set; }
-        public Nullable<double> precio { get; set; }
-        public string imagenPlato { get; set; }
+        public double precio { get; set; }
+        public byte[] imagenPlato { get; set; }
     
         public virtual Categoria categoria { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

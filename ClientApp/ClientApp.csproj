@@ -172,12 +172,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Assets\JellyCrazies.ttf" />
+    <Resource Include="Assets\Sumida Script DEMO.otf" />
     <EntityDeploy Include="Model\Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Resource Include="Assets\JellyCrazies.ttf" />
-    <Resource Include="Assets\Sumida Script DEMO.otf" />
     <None Include="Model\Model.edmx.diagram">
       <DependentUpon>Model.edmx</DependentUpon>
     </None>
@@ -199,6 +199,8 @@
     <Resource Include="Assets\Retroceso.png" />
     <Resource Include="Assets\plus.ico" />
     <Resource Include="Assets\minus.ico" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Model\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
@@ -210,7 +212,6 @@
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -4,16 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ab39cc274a5e4f2291872935a522b049" Name="Diagram1">
-        <EntityTypeShape EntityType="RestauranteConstanTeamModel.Categoria" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestauranteConstanTeamModel.Ingrediente" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestauranteConstanTeamModel.Pedido" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestauranteConstanTeamModel.Plato" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestauranteConstanTeamModel.PlatosPorPedido" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
-        <AssociationConnector Association="RestauranteConstanTeamModel.FK__platos__idCatego__4D94879B" ManuallyRouted="false" />
-        <AssociationConnector Association="RestauranteConstanTeamModel.FK__platosPor__idPed__59063A47" ManuallyRouted="false" />
-        <AssociationConnector Association="RestauranteConstanTeamModel.FK__platosPor__idPla__5812160E" ManuallyRouted="false" />
-        <AssociationConnector Association="RestauranteConstanTeamModel.ingredientesPorPlato" ManuallyRouted="false" />
+      <Diagram DiagramId="0acf0ed837ab4074b2dd93134b0e6954" Name="Diagram1">
+        <EntityTypeShape EntityType="RestauranteConstanteamModel.Categoria" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteConstanteamModel.Ingrediente" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteConstanteamModel.Pedido" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteConstanteamModel.Plato" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteConstanteamModel.PlatosPorPedido" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <AssociationConnector Association="RestauranteConstanteamModel.FK__platos__idCatego__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="RestauranteConstanteamModel.FK__platosPor__idPed__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="RestauranteConstanteamModel.FK__platosPor__idPla__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="RestauranteConstanteamModel.ingredientesPorPlato" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

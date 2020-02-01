@@ -87,19 +87,19 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Model.Context.cs">
+      <DependentUpon>Model.Context.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Model.cs">
+      <DependentUpon>Model.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Model.Designer.cs">
+      <DependentUpon>Model.edmx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\Pedido.cs">
       <DependentUpon>Model.tt</DependentUpon>
