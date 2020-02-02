@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AdminApp.View"
         xmlns:model="clr-namespace:AdminApp.Model"
         mc:Ignorable="d"
-        Title="Administrar" Height="450" Width="800">
+        Title="Administrar" Height="600" Width="800">
     <Window.Resources>
         <model:ImageBytesConverter x:Key="conversorImagenes"></model:ImageBytesConverter>
     </Window.Resources>
@@ -69,13 +69,27 @@
                 <DockPanel LastChildFill="False" DataContext="{Binding ElementName=PlatosListBox, Path=SelectedItem}">
                     <DockPanel  DockPanel.Dock="Top">
                         <StackPanel DockPanel.Dock="Left" Width="350">
-                            <StackPanel Margin="10" >
-                                <TextBlock FontSize="20">Id</TextBlock>
-                                <TextBox x:Name="IdPlatoTextBox" Text="{Binding idPlato}" IsEnabled="False"></TextBox>
-                            </StackPanel>
                             <StackPanel Margin="10">
-                                <TextBlock FontSize="20">Nombre</TextBlock>
-                                <TextBox x:Name="NombrePlatoTextBox" Text="{Binding nombrePlato}" IsEnabled="False"></TextBox>
+                                <TextBlock FontSize="15">Nombre</TextBlock>
+                                <TextBox x:Name="NombrePlatoTextBox" Text="{Binding nombrePlato}" IsEnabled="False" FontSize="15"></TextBox>
+                                <TextBlock FontSize="15">Categoria</TextBlock>
+                                <ComboBox x:Name="ListaCategoriasComboBox" ItemsSource="{Binding}" SelectedItem="{Binding idCategoria}" >
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding nombreCategoria}"></TextBlock>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                                <TextBlock FontSize="15">Precio</TextBlock>
+                                <TextBox x:Name="PrecioTextBox" Text="{Binding precio}" IsEnabled="False" FontSize="15"></TextBox>
+                                <TextBlock FontSize="15">Ingredientes</TextBlock>
+                                <ItemsControl ItemsSource="{Binding ingredientes}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock FontSize="15" Text="{Binding nombreIngrediente}"></TextBlock>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
                             </StackPanel>
                         </StackPanel>
 

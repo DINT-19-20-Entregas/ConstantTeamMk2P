@@ -26,6 +26,7 @@ namespace AdminApp.View
         {
             InitializeComponent();
             this.nuevaCategoria = nuevaCategoria;
+            
         }
 
         private void AceptarButton_Click(object sender, RoutedEventArgs e)
@@ -43,11 +44,17 @@ namespace AdminApp.View
             else
             {
                 nuevaCategoria.nombreCategoria = NombreCategoriaTextBox.Text;
-                (Owner.DataContext as AdministrarVM).AñadirCategoria(nuevaCategoria);                
+                (Owner.DataContext as AdministrarVM).AñadirCategoria(nuevaCategoria);
                 Close();
+                
             }
-
             
+        }
+
+        private void SeleccionarImagenButton_Click(object sender, RoutedEventArgs e)
+        {
+            nuevaCategoria.imagenCategoria = (Owner as Administrar).SeleccionarImagen();
+            ImagenCategoria.DataContext = nuevaCategoria;
         }
     }
 }

@@ -24,12 +24,14 @@ namespace AdminApp.View
     /// </summary>
     public partial class Administrar : Window
     {
+
         public Administrar()
         {
             InitializeComponent();
             this.DataContext = new AdministrarVM();
             CategoriasListBox.DataContext = (this.DataContext as AdministrarVM).categorias;
             PlatosListBox.DataContext = (this.DataContext as AdministrarVM).platos;
+            ListaCategoriasComboBox.DataContext = (this.DataContext as AdministrarVM).categorias;
         }
 
         private void AñadirCategoriaButton_Click(object sender, RoutedEventArgs e)
@@ -98,16 +100,30 @@ namespace AdminApp.View
             SeleccionarImagenButton.IsEnabled = false;
         }
 
+        private void PlatosListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            NombrePlatoTextBox.IsEnabled = false;
+            PrecioTextBox.IsEnabled = false;
+            ListaCategoriasComboBox.IsEnabled = false;
+        }
+
         private void SeleccionarImagenButton_Click(object sender, RoutedEventArgs e)
+        {
+            Categoria c = CategoriasListBox.SelectedItem as Categoria;
+            c.imagenCategoria = SeleccionarImagen();
+            
+        }
+
+        public byte[] SeleccionarImagen()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Imagenes png(*.png)|*.png|All files (*.*)|*.*";
             openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             if (openFileDialog.ShowDialog() == true)
             {
-                Categoria categoria = CategoriasListBox.SelectedItem as Categoria;                
-                categoria.imagenCategoria = ImageConverter.ImageToBinary(openFileDialog.FileName);
+                return ImageConverter.ImageToBinary(openFileDialog.FileName);
             }
+            return null;
         }
     }
 }
