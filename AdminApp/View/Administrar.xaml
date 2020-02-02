@@ -73,10 +73,10 @@
                                 <TextBlock FontSize="15">Nombre</TextBlock>
                                 <TextBox x:Name="NombrePlatoTextBox" Text="{Binding nombrePlato}" IsEnabled="False" FontSize="15"></TextBox>
                                 <TextBlock FontSize="15">Categoria</TextBlock>
-                                <ComboBox x:Name="ListaCategoriasComboBox" ItemsSource="{Binding}" SelectedItem="{Binding idCategoria}" >
+                                <ComboBox x:Name="ListaCategoriasComboBox" ItemsSource="{Binding}">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding nombreCategoria}"></TextBlock>
+                                            <TextBlock Text="{Binding idCategoria}"></TextBlock>
                                         </DataTemplate>
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>

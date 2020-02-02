@@ -32,6 +32,7 @@ namespace AdminApp.View
             CategoriasListBox.DataContext = (this.DataContext as AdministrarVM).categorias;
             PlatosListBox.DataContext = (this.DataContext as AdministrarVM).platos;
             ListaCategoriasComboBox.DataContext = (this.DataContext as AdministrarVM).categorias;
+            ListaCategoriasComboBox.SelectedValue = (PlatosListBox.SelectedItem as Plato).idCategoria;
         }
 
         private void AñadirCategoriaButton_Click(object sender, RoutedEventArgs e)
