@@ -14,7 +14,6 @@ namespace AdminApp.ViewModel
     {
         public ObservableCollection<Categoria> categorias;
         public ObservableCollection<Plato> platos;
-
         public AdministrarVM()
         {
             categorias = BBDDService.GetCategorias();
