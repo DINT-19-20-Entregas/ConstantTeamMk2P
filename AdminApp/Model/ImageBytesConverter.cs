@@ -23,7 +23,9 @@ namespace AdminApp.Model
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            if (value != null)
+                return ImageConverter.ImageToByte(value as BitmapImage);
+            return null;
         }
     }
 }

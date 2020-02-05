@@ -49,7 +49,7 @@ namespace AdminApp.View
             if(CategoriasListBox.SelectedItem != null)
             {
                 NombreCategoriaTextBox.IsEnabled = true;
-                SeleccionarImagenButton.IsEnabled = true;
+                SeleccionarImagenCategoriaButton.IsEnabled = true;
             }
             
         }
@@ -97,7 +97,7 @@ namespace AdminApp.View
         private void CategoriasListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             NombreCategoriaTextBox.IsEnabled = false;
-            SeleccionarImagenButton.IsEnabled = false;
+            SeleccionarImagenCategoriaButton.IsEnabled = false;            
 
         }
 
@@ -110,23 +110,36 @@ namespace AdminApp.View
             
         }
 
-        private void SeleccionarImagenButton_Click(object sender, RoutedEventArgs e)
+        private void SeleccionarImagenCategoriaButton_Click(object sender, RoutedEventArgs e)
         {
-            Categoria c = CategoriasListBox.SelectedItem as Categoria;
-            c.imagenCategoria = SeleccionarImagen();
-            
+            Categoria c = CategoriasListBox.SelectedItem as Categoria;            
+            c.imagenCategoria = ImageConverter.ImageToBinary(SeleccionarImagen());
         }
 
-        public byte[] SeleccionarImagen()
+        public string SeleccionarImagen()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Imagenes png(*.png)|*.png|All files (*.*)|*.*";
             openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             if (openFileDialog.ShowDialog() == true)
             {
-                return ImageConverter.ImageToBinary(openFileDialog.FileName);
+                
+                return openFileDialog.FileName;
             }
             return null;
+        }
+
+        private void AñadirIngredienteButton_Click(object sender, RoutedEventArgs e)
+        {
+            Plato plato = PlatosListBox.SelectedItem as Plato;
+            Ingrediente ingrediente = new Ingrediente();
+            (this.DataContext as AdministrarVM).AñadirIngrediente(ingrediente,plato);
+
+        }
+
+        private void EliminarIngredienteButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

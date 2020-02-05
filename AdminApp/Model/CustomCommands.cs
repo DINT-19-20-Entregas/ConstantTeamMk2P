@@ -49,6 +49,13 @@ namespace AdminApp.Model
                 typeof(CustomCommands)
             );
 
+        public static readonly RoutedUICommand AñadirIngrediente = new RoutedUICommand
+            (
+                "AñadirIngrediente",
+                "AñadirIngrediente",
+                typeof(CustomCommands)
+            );
+
         public static readonly RoutedUICommand CargarCuenta = new RoutedUICommand
         (
             "CargarCuenta",

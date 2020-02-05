@@ -20,7 +20,7 @@
                     <ListBox x:Name="CategoriasListBox" ItemsSource="{Binding}"  Width="250" SelectionChanged="CategoriasListBox_SelectionChanged">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding nombreCategoria}" FontSize="20"></TextBlock>
+                                <TextBlock Text="{Binding nombreCategoria, UpdateSourceTrigger=PropertyChanged}" FontSize="20"></TextBlock>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
@@ -30,13 +30,13 @@
                     <StackPanel DockPanel.Dock="Top" Width="350">
                         <StackPanel Margin="10">
                             <TextBlock FontSize="20">Nombre</TextBlock>
-                            <TextBox x:Name="NombreCategoriaTextBox" Text="{Binding nombreCategoria}" IsEnabled="False"></TextBox>
+                            <TextBox x:Name="NombreCategoriaTextBox" Text="{Binding nombreCategoria, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False"></TextBox>
                         </StackPanel>
                         <DockPanel Margin="10">
                             <Border BorderBrush="Black" BorderThickness="1.5" Width="160" Height="160">
                                 <Image x:Name="ImagenCategoria" Source="{Binding imagenCategoria, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource conversorImagenes}}"/>
                             </Border>
-                            <Button x:Name="SeleccionarImagenButton" VerticalAlignment="Center" FontSize="15" Padding="5" Margin="10" IsEnabled="False" Click="SeleccionarImagenButton_Click">Seleccionar imagen</Button>
+                            <Button x:Name="SeleccionarImagenCategoriaButton" VerticalAlignment="Center" FontSize="15" Padding="5" Margin="10" IsEnabled="False" Click="SeleccionarImagenCategoriaButton_Click">Seleccionar imagen</Button>
                         </DockPanel>
                         
                     </StackPanel>
@@ -73,7 +73,7 @@
                                 <TextBlock FontSize="15">Nombre</TextBlock>
                                 <TextBox x:Name="NombrePlatoTextBox" Text="{Binding nombrePlato}" IsEnabled="False" FontSize="15"></TextBox>
                                 <TextBlock FontSize="15">Categoria</TextBlock>
-                                <ComboBox x:Name="ListaCategoriasComboBox" ItemsSource="{Binding}">
+                                <ComboBox x:Name="ListaCategoriasComboBox" ItemsSource="{Binding}" FontSize="15">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
                                             <TextBlock Text="{Binding idCategoria}"></TextBlock>
@@ -83,19 +83,27 @@
                                 <TextBlock FontSize="15">Precio</TextBlock>
                                 <TextBox x:Name="PrecioTextBox" Text="{Binding precio}" IsEnabled="False" FontSize="15"></TextBox>
                                 <TextBlock FontSize="15">Ingredientes</TextBlock>
-                                <ItemsControl ItemsSource="{Binding ingredientes}">
-                                    <ItemsControl.ItemTemplate>
+                                <ListBox ItemsSource="{Binding ingredientes}" Height="200">
+                                    <ListBox.ItemTemplate>
                                         <DataTemplate>
                                             <TextBlock FontSize="15" Text="{Binding nombreIngrediente}"></TextBlock>
                                         </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button x:Name="AñadirIngredienteButton" FontSize="15" Margin="5" Click="AñadirIngredienteButton_Click">Añadir</Button>
+                                    <Button x:Name="EliminarIngredienteButton" FontSize="15" Margin="5" Click="EliminarIngredienteButton_Click">Eliminar</Button>
+                                </StackPanel>                                
                             </StackPanel>
                         </StackPanel>
 
-                        <Border BorderBrush="Black" BorderThickness="1.5" >
-                            <Image ></Image>
-                        </Border>
+                        <StackPanel>
+                            <Border Margin="5" BorderBrush="Black" BorderThickness="1.5" Width="160" Height="160">
+                                <Image Source="{Binding imagenCategoria, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource conversorImagenes}}"></Image>
+                            </Border>
+                            <Button FontSize="15" Margin="5">Seleccionar imagen</Button>
+                        </StackPanel>
+                        
                     </DockPanel>
 
 

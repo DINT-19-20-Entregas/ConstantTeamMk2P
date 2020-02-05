@@ -1,4 +1,5 @@
 ﻿using AdminApp.Model;
+using AdminApp.Service;
 using AdminApp.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,6 @@ namespace AdminApp.View
         {
             InitializeComponent();
             this.nuevaCategoria = nuevaCategoria;
-            
         }
 
         private void AceptarButton_Click(object sender, RoutedEventArgs e)
@@ -53,7 +53,7 @@ namespace AdminApp.View
 
         private void SeleccionarImagenButton_Click(object sender, RoutedEventArgs e)
         {
-            nuevaCategoria.imagenCategoria = (Owner as Administrar).SeleccionarImagen();
+            nuevaCategoria.imagenCategoria = ImageConverter.ImageToBinary((Owner as Administrar).SeleccionarImagen());
             ImagenCategoria.DataContext = nuevaCategoria;
         }
     }

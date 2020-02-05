@@ -42,6 +42,13 @@ namespace AdminApp.ViewModel
             BBDDService.DeletePlato(plato);
         }
 
+        public void AñadirIngrediente(Ingrediente ingrediente, Plato plato)
+        {
+            ingrediente.platos.Add(plato);
+            BBDDService.AddIngrediente(ingrediente);
+        }
+
+
         public void GuardarCambios()
         {
             MessageBox.Show("Se han guardado los cambios", "Guardar cambios", MessageBoxButton.OK, MessageBoxImage.Information);
