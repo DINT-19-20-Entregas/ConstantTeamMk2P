@@ -3,6 +3,7 @@ using ClientApp.ViewModel;
 using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +29,8 @@ namespace ClientApp.View
         {
             InitializeComponent();
             VM = new PlatosVM(pedido);
+            ObservableCollection<PlatosPorPedido> ppp = new ObservableCollection<PlatosPorPedido>(VM.GetPedido().platosPorPedido);
+            listaPedido.DataContext = ppp;
             //llamar al metodo que devuelve la lista de tiles
             List<Tile> tiles = VM.InicializarPlatos(categoria);
             IntroducirPlatos(tiles);

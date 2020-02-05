@@ -115,7 +115,7 @@ namespace ClientApp.Service
         {
             var consulta = from p in contexto.platosPorPedido
                            where p.idPedido == pedido.idPedido
-                           select p.platos;
+                           select p.plato;
 
             return new ObservableCollection<Plato>(consulta);
         }

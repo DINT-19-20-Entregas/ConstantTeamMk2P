@@ -1,5 +1,6 @@
 ﻿using System;
 using ClientApp.ViewModel;
+using ClientApp.Model;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
+using System.Collections.ObjectModel;
 
 namespace ClientApp.View
 {
@@ -28,6 +30,18 @@ namespace ClientApp.View
             InitializeComponent();
             VM = new CategoriasVM();
             VM.Inicializacion();
+            ObservableCollection<PlatosPorPedido> platos = new ObservableCollection<PlatosPorPedido>(VM.GetPedido().platosPorPedido);
+
+            PlatosPorPedido ppp = new PlatosPorPedido();
+            ppp.pedido = VM.GetPedido();
+            ppp.cantidad = 3;
+            Plato p = new Plato();
+            p.nombrePlato = "Pollo";
+            ppp.plato = p;
+            platos.Add(ppp);
+            VM.GetPedido().platosPorPedido.Add(ppp);
+
+            listaPedido.DataContext = platos;
             List<Tile> tiles = VM.InicializarCategorias();
             IntroducirCategorias(tiles);
         }

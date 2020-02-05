@@ -39,6 +39,7 @@ namespace ClientApp.ViewModel
                 t.Command = CustomCommands.CargarInfoPlato;
                 StackPanel sp = new StackPanel();
                 Image i = new Image();
+                i.Source = ImageConverter.LoadImage(item.imagenPlato);
                 i.Width = 200;
                 TextBlock tb = new TextBlock();
                 tb.Text = item.nombrePlato;
@@ -67,6 +68,11 @@ namespace ClientApp.ViewModel
             else
                 iP = new InfoPlato(new Plato(), pedido);
             iP.Show();
+        }
+
+        public Pedido GetPedido()
+        {
+            return pedido;
         }
     }
 }

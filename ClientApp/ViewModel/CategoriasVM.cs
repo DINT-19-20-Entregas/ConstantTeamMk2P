@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
+
 namespace ClientApp.ViewModel
 {
     public class CategoriasVM
@@ -45,7 +46,7 @@ namespace ClientApp.ViewModel
                 StackPanel sp = new StackPanel();
                 Image i = new Image();
                 i.Width = 200;
-                //i.Source = new BitmapImage(new Uri(@"../Assets/Hamborguesa.png"));
+                i.Source = ImageConverter.LoadImage(item.imagenCategoria);
                 TextBlock tb = new TextBlock();
                 tb.Text = item.nombreCategoria;
                 tb.Style = Application.Current.FindResource("FuenteYTamano") as Style;
@@ -78,6 +79,11 @@ namespace ClientApp.ViewModel
         {
             Cuenta c = new Cuenta(pedido);
             c.Show();
+        }
+
+        public Pedido GetPedido()
+        {
+            return pedido;
         }
     }
 }
