@@ -3,6 +3,7 @@ using AdminApp.Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ using System.Windows;
 
 namespace AdminApp.ViewModel
 {
-    public class AdministrarVM
+    public class AdministrarVM : INotifyPropertyChanged
     {
         public ObservableCollection<Categoria> categorias { get; set; }
         public ObservableCollection<Plato> platos { get; set; }
@@ -22,6 +23,8 @@ namespace AdminApp.ViewModel
             categorias = BBDDService.GetCategorias();
             platos = BBDDService.GetPlatos();
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public void AñadirCategoria(Categoria categoria)
         {
