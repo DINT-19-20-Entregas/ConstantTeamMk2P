@@ -57,6 +57,14 @@ namespace ClientApp.Model
             null
         );
 
+        public static readonly RoutedUICommand ConfirmarCuenta = new RoutedUICommand
+        (
+            "ConfirmarCuenta",
+            "ConfirmarCuenta",
+            typeof(CustomCommands),
+            null
+        );
+
         //Commandos no implementados
         public static readonly RoutedUICommand SeleccionarCategoria = new RoutedUICommand
         (

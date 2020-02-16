@@ -70,12 +70,13 @@
     <Grid>
         <ScrollViewer Margin="40" VerticalScrollBarVisibility="Hidden">
             <WrapPanel Background="Yellow" x:Name="ContenedorCategorias">
+                <!--
                 <Controls:Tile Background="Red" Height="289" Width="289" Margin="15" Command="comands:CustomCommands.CargarPlatos">
                     <StackPanel>
                         <Image Width="200" Source="../Assets/Hamborguesa.png"/>
                         <TextBlock Style="{StaticResource FuenteYTamano}" Text="HAMBORGUESAS"/>
                     </StackPanel>
-                </Controls:Tile>
+                </Controls:Tile> -->
                 
                 
             </WrapPanel>
@@ -107,17 +108,26 @@
                 </ToggleButton>
                 <TextBlock DockPanel.Dock="Top" Style="{StaticResource FuenteYTamano}" Text="Pedido" Margin="0,15,0,30"/>
                 <Controls:Tile DockPanel.Dock="Bottom" Width="200" Height="80" Command="comands:CustomCommands.CargarCuenta">
-                    <TextBlock Style="{StaticResource FuenteYTamano}" Text="Total: 843,98€" Margin="0,15,0,15"/>
+                    <TextBlock x:Name="precioTotalButtonTextBlock" Style="{StaticResource FuenteYTamano}"  Margin="0,15,0,15" >
+                        <Run Text="Total:"/>
+                        <Run Text="{Binding Path=precioTotal, StringFormat=C, ConverterCulture=ES-es}"/>
+                    </TextBlock>
                 </Controls:Tile>
                 
-                <ItemsControl>
-                    <DockPanel>
-                        <TextBlock DockPanel.Dock="Left"  FontWeight="Bold">
-                        <Run Text="-> 2 x"/>
-                        <Run Text="Hamborguessaa"/>
-                        </TextBlock>
-                        <TextBlock DockPanel.Dock="Right" HorizontalAlignment="Right" Text="45,05€" Margin="0,0,10,0" FontWeight="Bold"/>
-                    </DockPanel>
+                <ItemsControl x:Name="listaPedido" ItemsSource="{Binding}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <DockPanel>
+                                <TextBlock DockPanel.Dock="Left"  FontWeight="Bold">
+                        <Run Text="->"/>
+                        <Run Text="{Binding cantidad}"/>
+                        <Run Text="x"/>
+                        <Run Text="{Binding plato.nombrePlato}"/>
+                                </TextBlock>
+                                <TextBlock DockPanel.Dock="Right" HorizontalAlignment="Right" Text="{Binding plato.precio, StringFormat=C, ConverterCulture=ES-es}" Margin="0,0,10,0" FontWeight="Bold"/>
+                            </DockPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>                    
                 </ItemsControl>
             </DockPanel>
         </Border>

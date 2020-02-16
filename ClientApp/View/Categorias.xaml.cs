@@ -1,5 +1,6 @@
 ﻿using System;
 using ClientApp.ViewModel;
+using ClientApp.Model;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
+using System.Collections.ObjectModel;
 
 namespace ClientApp.View
 {
@@ -20,16 +22,28 @@ namespace ClientApp.View
     /// Lógica de interacción para Categorias.xaml
     /// </summary>
     public partial class Categorias : Window
-    {
-        private CategoriasVM VM;
+    {        
 
         public Categorias()
         {
             InitializeComponent();
-            VM = new CategoriasVM();
-            VM.Inicializacion();
-            List<Tile> tiles = VM.InicializarCategorias();
+            this.DataContext = new CategoriasVM();
+            (this.DataContext as CategoriasVM).Inicializacion();
+            ObservableCollection<PlatosPorPedido> platos = (this.DataContext as CategoriasVM).Pedidoa.platosPorPedido;
+
+            //PlatosPorPedido ppp = new PlatosPorPedido();
+            //ppp.pedido = VM.GetPedido();
+            //ppp.cantidad = 3;
+            //Plato p = new Plato();
+            //p.nombrePlato = "Pollo";
+            //ppp.plato = p;
+            //platos.Add(ppp);
+            //VM.GetPedido().platosPorPedido.Add(ppp);
+
+            listaPedido.DataContext = platos;
+            List<Tile> tiles = (this.DataContext as CategoriasVM).InicializarCategorias();
             IntroducirCategorias(tiles);
+            precioTotalButtonTextBlock.DataContext = (this.DataContext as CategoriasVM).Pedidoa;
         }
 
         private void IntroducirCategorias(List<Tile> tiles)
@@ -43,7 +57,7 @@ namespace ClientApp.View
         private void CargarPlatosCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             //int.Parse(((Tile)sender).Tag.ToString())
-            VM.CargarPlatos(int.Parse(((Tile)e.OriginalSource).Tag.ToString()));
+            (this.DataContext as CategoriasVM).CargarPlatos(int.Parse(((Tile)e.OriginalSource).Tag.ToString()));
         }
 
         private void CargarPlatosCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -63,7 +77,7 @@ namespace ClientApp.View
 
         private void CargarCuentaCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            VM.CargarCuenta();
+            (this.DataContext as CategoriasVM).CargarCuenta();
         }
 
         private void CargarCuentaCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)

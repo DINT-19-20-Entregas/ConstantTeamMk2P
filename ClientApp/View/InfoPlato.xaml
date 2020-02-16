@@ -3,76 +3,90 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:ClientApp.View"
-        xmlns:model="clr-namespace:ClientApp.Model"
+        xmlns:comands="clr-namespace:ClientApp.Model"
         mc:Ignorable="d"
         Title="InfoPlato" Height="768" Width="1366"
         WindowStyle="None">
 
     <Window.CommandBindings>
         <CommandBinding 
-            Command="model:CustomCommands.AñadirPlato"
+            Command="comands:CustomCommands.AñadirPlato"
             Executed="AñadirPlato_Executed"
             CanExecute="AñadirPlato_CanExecute"
             />
         <CommandBinding
-            Command="model:CustomCommands.Retroceder"
+            Command="comands:CustomCommands.Retroceder"
             Executed="RetrocederCommand_Executed"
             CanExecute="RetrocederCommand_CanExecute"/>
         
     </Window.CommandBindings>
-    <DockPanel>
-        <Border DockPanel.Dock="Top" BorderBrush="Black" BorderThickness="0,0,0,2" Padding="5">
-            <TextBlock x:Name="NombrePlatoTextBlock" FontSize="35"  TextAlignment="Center" Text="{Binding nombrePlato}"></TextBlock>
-        </Border>
-        
-        <DockPanel DockPanel.Dock="Bottom" Height="100">
-            <Button Width="170" DockPanel.Dock="Left" FontSize="30" Command="model:CustomCommands.Retroceder">Atrás</Button>
-            <Button Width="170" DockPanel.Dock="Right" FontSize="30" Command="model:CustomCommands.AñadirPlato">Añadir</Button>
-            <TextBlock  x:Name="PrecioTotalTextBlock" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center">
+    <Window.Resources>
+        <Style x:Key="FuenteYTamano" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="/ClientApp;component/Assets/#Sumida Script DEMO"/>
+            <Setter Property="FontSize" Value="35"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="Fuente" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="/ClientApp;component/Assets/#Sumida Script DEMO"/>            
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <DockPanel Margin="40">
+            <!--
+            -->
+            <!--
+            <DockPanel DockPanel.Dock="Bottom" Height="100">
+                <Button Width="170" DockPanel.Dock="Left" FontSize="30" Command="comands:CustomCommands.Retroceder">Atrás</Button>
+                <Button Width="170" DockPanel.Dock="Right" FontSize="30" Command="comands:CustomCommands.AñadirPlato">Añadir</Button>
+                <TextBlock  x:Name="PrecioTotalTextBlock" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center">
                 Total : 31.80 €
-            </TextBlock>
-        </DockPanel>
-        <DockPanel>                   
-                
-            <Border Margin="20" BorderBrush="Black" BorderThickness="2" CornerRadius="5" Width="600" HorizontalAlignment="Left">
+                </TextBlock>
+            </DockPanel>-->
+            <StackPanel DockPanel.Dock="Left" Width="500">
+                <Border DockPanel.Dock="Top" BorderBrush="Black" BorderThickness="0,0,0,2" Padding="5">
+                    <TextBlock x:Name="NombrePlatoTextBlock" Style="{StaticResource FuenteYTamano}" Text="{Binding nombrePlato}"></TextBlock>                    
+                </Border>
+                <Border Margin="20" BorderBrush="Black" BorderThickness="5"  Width="400" >
+                    <Image Height="300" Width="300" HorizontalAlignment="Center" Source="../Assets/Hamborguesa.png"/>
+                </Border>
+                <TextBlock FontSize="50" TextAlignment="Center" Style="{StaticResource Fuente}">Cantidad</TextBlock>
                 <Grid>
-                    <Image></Image>
-                    <TextBlock x:Name="PrecioPlatoTextBlock" Text="{Binding precio}"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" FontSize="40"></TextBlock>
-                </Grid>
-            </Border>
-            <DockPanel Margin="50,0,0,0">                
-                <StackPanel VerticalAlignment="Center" DockPanel.Dock="Right">
-                    <TextBlock FontSize="50" TextAlignment="Center">Cantidad</TextBlock>
-                    <StackPanel>
-                        <Button x:Name="PlusButton" FontSize="50" Width="60" Height="60" Padding="5" Click="PlusButton_Click">
-                            <Image Source="../Assets/plus.ico"></Image>
-                        </Button>
-                        <TextBlock DataContext="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}" Text="{Binding cantidadPlatos}"  x:Name="CantidadTextBlock" FontSize="35"  Width="50" Height="50" TextAlignment="Center"></TextBlock>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Button x:Name="MinusButton" FontSize="50" Width="60" Height="60" Padding="5" Click="MinusButton_Click">
                             <Image Source="../Assets/minus.ico"></Image>
                         </Button>
+                        <TextBlock DataContext="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}" Text="{Binding cantidadPlatos}"  x:Name="CantidadTextBlock" FontSize="35"  Width="50" Height="50" TextAlignment="Center"></TextBlock>
+                        <Button x:Name="PlusButton" FontSize="50" Width="60" Height="60" Padding="5" Click="PlusButton_Click">
+                            <Image Source="../Assets/plus.ico"></Image>
+                        </Button>
                     </StackPanel>
-                    </StackPanel>
-
-                <Border BorderBrush="Black" BorderThickness="2" CornerRadius="5" Margin="20">
-                    <StackPanel>
-                        <TextBlock FontSize="40" Background="Purple" TextAlignment="Center" >Ingredientes</TextBlock>
+                </Grid>
+            </StackPanel>
+            <StackPanel Margin="100">
+                <DockPanel>
+                    <TextBlock DockPanel.Dock="Top" TextAlignment="Center" Style="{StaticResource Fuente}" FontSize="50" >Ingredientes</TextBlock>
+                    <Border BorderBrush="Black" BorderThickness="0,5,0,0">
                         <ItemsControl x:Name="ListaIngredientes" ItemsSource="{Binding}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <TextBlock FontSize="20" TextAlignment="Center" Text="{Binding nombreIngrediente}"></TextBlock>
+                                    <TextBlock FontSize="30" TextAlignment="Center" Text="{Binding nombreIngrediente}" Style="{StaticResource Fuente}"></TextBlock>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
 
                         </ItemsControl>
-                    </StackPanel>
-                </Border>
-            </DockPanel>
-            
-            
+                    </Border>
+                </DockPanel>
+            </StackPanel>
         </DockPanel>
-        
-       
-    </DockPanel>
+
+        <Controls:Tile HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="65" Margin="-40,0,0,-12" Command="comands:CustomCommands.Retroceder">
+            <Image Source="../Assets/Retroceso.png"/>
+        </Controls:Tile>
+        <Controls:Tile HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="100" Margin="0,0,-10,0" Command="comands:CustomCommands.AñadirPlato">
+            <Image Source="../Assets/Confirmar.png"/>
+        </Controls:Tile>
+    </Grid>
 </Window>

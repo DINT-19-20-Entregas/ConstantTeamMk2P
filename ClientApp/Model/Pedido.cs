@@ -11,13 +11,14 @@ namespace ClientApp.Model
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Collections.ObjectModel;
+
     public partial class Pedido
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Pedido()
         {
-            this.platosPorPedido = new HashSet<PlatosPorPedido>();
+            this.platosPorPedido = new ObservableCollection<PlatosPorPedido>();
         }
     
         public int idPedido { get; set; }
@@ -25,6 +26,6 @@ namespace ClientApp.Model
         public System.DateTime Fecha { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PlatosPorPedido> platosPorPedido { get; set; }
+        public virtual ObservableCollection<PlatosPorPedido> platosPorPedido { get; set; }
     }
 }

@@ -12,13 +12,16 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using System.ComponentModel;
 
 namespace ClientApp.ViewModel
 {
-    public class CategoriasVM
+    public class CategoriasVM : INotifyPropertyChanged
     {
-        private Pedido pedido;
+        public Pedido Pedidoa { get; set; }
         public ObservableCollection<Categoria> categorias;
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public CategoriasVM()
         {                        
@@ -26,7 +29,7 @@ namespace ClientApp.ViewModel
 
         public void Inicializacion()
         {
-            pedido = new Pedido();            
+            Pedidoa = new Pedido();            
         }
 
         public List<Tile> InicializarCategorias()
@@ -45,7 +48,7 @@ namespace ClientApp.ViewModel
                 StackPanel sp = new StackPanel();
                 Image i = new Image();
                 i.Width = 200;
-                //i.Source = new BitmapImage(new Uri(@"../Assets/Hamborguesa.png"));
+                i.Source = ImageConverter.LoadImage(item.imagenCategoria);
                 TextBlock tb = new TextBlock();
                 tb.Text = item.nombreCategoria;
                 tb.Style = Application.Current.FindResource("FuenteYTamano") as Style;
@@ -67,17 +70,22 @@ namespace ClientApp.ViewModel
             Platos p;
             if (categorias.Count > 0)
             {
-                p = new Platos(categorias[index], pedido);
+                p = new Platos(categorias[index], Pedidoa);
             }
             else
-                p = new Platos(new Categoria(), pedido);            
+                p = new Platos(new Categoria(), Pedidoa);            
             p.Show();
         }
 
         public void CargarCuenta()
         {
-            Cuenta c = new Cuenta(pedido);
+            Cuenta c = new Cuenta(Pedidoa);
             c.Show();
+        }
+
+        public Pedido GetPedido()
+        {
+            return Pedidoa;
         }
     }
 }

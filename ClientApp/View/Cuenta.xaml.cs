@@ -1,4 +1,5 @@
 ﻿using ClientApp.Model;
+using ClientApp.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,37 @@ namespace ClientApp.View
     {
         public Cuenta(Pedido pedido)
         {
+            this.DataContext = new CuentaVM(pedido);
             InitializeComponent();
+            
+        }
+
+        private void RetrocederCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void RetrocederCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void ConfirmarCuentaCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            (this.DataContext as CuentaVM).GuardarPedido();
+        }
+
+        private void ConfirmarCuentaCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            if ((this.DataContext as CuentaVM).Pedidoa.platosPorPedido.Count != null)
+            {
+                if ((this.DataContext as CuentaVM).Pedidoa.platosPorPedido.Count > 0)
+                    e.CanExecute = true;
+                else
+                    e.CanExecute = false;
+            }
+            else
+                e.CanExecute = false;
         }
     }
 }
