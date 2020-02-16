@@ -20,7 +20,10 @@
             Command="comands:CustomCommands.Retroceder"
             Executed="RetrocederCommand_Executed"
             CanExecute="RetrocederCommand_CanExecute"/>
-        
+        <CommandBinding
+            Command="comands:CustomCommands.AbrirAyuda"
+            Executed="AbrirAyudaCommand_Executed"
+            CanExecute="AbrirAyudaCommand_CanExecute"/>
     </Window.CommandBindings>
     <Window.Resources>
         <Style x:Key="FuenteYTamano" TargetType="TextBlock">
@@ -84,6 +87,9 @@
 
         <Controls:Tile HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="65" Margin="-40,0,0,-12" Command="comands:CustomCommands.Retroceder">
             <Image Source="../Assets/Retroceso.png"/>
+        </Controls:Tile>
+        <Controls:Tile HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="65" Margin="30,0,0,-12" Command="comands:CustomCommands.AbrirAyuda">
+            <Image Source="../Assets/Help.png" Height="35"/>
         </Controls:Tile>
         <Controls:Tile HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="100" Margin="0,0,-10,0" Command="comands:CustomCommands.AñadirPlato">
             <Image Source="../Assets/Confirmar.png"/>

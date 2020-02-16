@@ -18,6 +18,10 @@
             Command="comands:CustomCommands.ConfirmarCuenta"
             Executed="ConfirmarCuentaCommand_Executed"
             CanExecute="ConfirmarCuentaCommand_CanExecute"/>
+        <CommandBinding
+            Command="comands:CustomCommands.AbrirAyuda"
+            Executed="AbrirAyudaCommand_Executed"
+            CanExecute="AbrirAyudaCommand_CanExecute"/>
     </Window.CommandBindings>
     <Window.Resources>        
         <DataTemplate x:Key="CuentaTemplate">
@@ -74,6 +78,9 @@
         </DockPanel>
         <Controls:Tile HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="95" Margin="-15,0,0,-12" Command="comands:CustomCommands.Retroceder">
             <Image Source="../Assets/Retroceso.png"/>
+        </Controls:Tile>
+        <Controls:Tile HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="65" Margin="75,0,0,5" Command="comands:CustomCommands.AbrirAyuda">
+            <Image Source="../Assets/Help.png" Height="50"/>
         </Controls:Tile>
     </Grid>
 </Window>

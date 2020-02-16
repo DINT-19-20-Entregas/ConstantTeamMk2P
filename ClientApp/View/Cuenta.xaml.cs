@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 //using System.Newtonsoft.Json;
 using System.Net;
+using System.Diagnostics;
 
 namespace ClientApp.View
 {
@@ -44,6 +45,16 @@ namespace ClientApp.View
         private void ConfirmarCuentaCommand_Executed(object sender, ExecutedRoutedEventArgs e) 
         {
             (this.DataContext as CuentaVM).GuardarPedido();
+        }
+
+        private void AbrirAyudaCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Process.Start("ApiRestaurantHelp.chm");
+        }
+
+        private void AbrirAyudaCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
         }
 
         private void ConfirmarCuentaCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)

@@ -65,6 +65,14 @@ namespace ClientApp.Model
             null
         );
 
+        public static readonly RoutedUICommand AbrirAyuda = new RoutedUICommand
+        (
+            "AbrirAyuda",
+            "AbrirAyuda",
+            typeof(CustomCommands),
+            null
+        );
+
         //Commandos no implementados
         public static readonly RoutedUICommand SeleccionarCategoria = new RoutedUICommand
         (

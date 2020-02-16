@@ -66,6 +66,10 @@
             Command="comands:CustomCommands.CargarCuenta"
             Executed="CargarCuentaCommand_Executed"
             CanExecute="CargarCuentaCommand_CanExecute"/>
+        <CommandBinding
+            Command="comands:CustomCommands.AbrirAyuda"
+            Executed="AbrirAyudaCommand_Executed"
+            CanExecute="AbrirAyudaCommand_CanExecute"/>
     </Window.CommandBindings>
     <Grid>
         <ScrollViewer Margin="40" VerticalScrollBarVisibility="Hidden">
@@ -83,6 +87,9 @@
         </ScrollViewer>
         <Controls:Tile HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="65" Margin="-40,0,0,-12" Command="comands:CustomCommands.Retroceder">
             <Image Source="../Assets/Retroceso.png"/>
+        </Controls:Tile>
+        <Controls:Tile HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="65" Margin="30,0,0,-12" Command="comands:CustomCommands.AbrirAyuda">
+            <Image Source="../Assets/Help.png" Height="35"/>
         </Controls:Tile>
         <Border x:Name="stkEasyLocatePanel" Background="Green" Height="770" Width="225" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,-200,0" >
             <DockPanel>
