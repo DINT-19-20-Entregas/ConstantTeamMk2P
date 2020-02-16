@@ -40,7 +40,14 @@
             </Border>
             <Border DockPanel.Dock="Bottom" BorderBrush="Black" BorderThickness="0,5,0,0">
                 <Grid>
-                    <TextBlock HorizontalAlignment="Right" Text="{Binding Path=Pedidoa.precioTotal, UpdateSourceTrigger=PropertyChanged, StringFormat=C, ConverterCulture=ES-es}" FontSize="50" Padding="0,0,100,0" FontFamily="/ClientApp;component/Assets/#Sumida Script DEMO"/>
+                    <DockPanel LastChildFill="False">
+                        <TextBlock HorizontalAlignment="Right" Text="{Binding Path=Pedidoa.precioTotal, UpdateSourceTrigger=PropertyChanged, StringFormat=C, ConverterCulture=ES-es}" FontSize="50" Padding="0,0,100,0" FontFamily="/ClientApp;component/Assets/#Sumida Script DEMO" DockPanel.Dock="Right"/>
+                        <TextBlock HorizontalAlignment="Right" FontSize="50" Padding="0,0,50,0" FontFamily="/ClientApp;component/Assets/#Sumida Script DEMO" DockPanel.Dock="Right">
+                            <Run Text="{Binding Path=PrecioConIva, UpdateSourceTrigger=PropertyChanged, StringFormat=C, ConverterCulture=ES-es}"/>
+                            <Run Text="(+Iva)"/>
+                        </TextBlock>
+                    </DockPanel>
+                    
                     <Controls:Tile HorizontalAlignment="Center" Command="comands:CustomCommands.ConfirmarCuenta" Background="Green" Height="60">
                         <TextBlock FontFamily="/ClientApp;component/Assets/#Sumida Script DEMO" FontSize="23" Text="Confirmar Pedido"/>
                     </Controls:Tile>

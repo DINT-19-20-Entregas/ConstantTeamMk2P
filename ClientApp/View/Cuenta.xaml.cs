@@ -13,6 +13,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+//using System.Newtonsoft.Json;
+using System.Net;
 
 namespace ClientApp.View
 {
@@ -24,6 +26,7 @@ namespace ClientApp.View
         public Cuenta(Pedido pedido)
         {
             this.DataContext = new CuentaVM(pedido);
+            (this.DataContext as CuentaVM).ObtenerPrecioCOnIva();
             InitializeComponent();
             
         }
@@ -38,7 +41,7 @@ namespace ClientApp.View
             e.CanExecute = true;
         }
 
-        private void ConfirmarCuentaCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        private void ConfirmarCuentaCommand_Executed(object sender, ExecutedRoutedEventArgs e) 
         {
             (this.DataContext as CuentaVM).GuardarPedido();
         }
