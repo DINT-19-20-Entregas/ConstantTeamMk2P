@@ -2,6 +2,7 @@
 using ClientApp.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,6 +51,16 @@ namespace ClientApp.View
         }
 
         private void RetrocederCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void AbrirAyudaCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Process.Start("ApiRestaurantHelp.chm");
+        }
+
+        private void AbrirAyudaCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
         }

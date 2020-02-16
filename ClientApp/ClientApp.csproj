@@ -187,6 +187,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="Assets\ApiRestaurantHelp.chm" />
     <None Include="Model\Model.edmx.diagram">
       <DependentUpon>Model.edmx</DependentUpon>
     </None>
@@ -211,6 +212,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Confirmar.png" />
+    <Resource Include="Assets\Help.png" />
     <Content Include="Model\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>

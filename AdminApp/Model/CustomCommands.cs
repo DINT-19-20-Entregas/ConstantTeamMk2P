@@ -64,7 +64,14 @@ namespace AdminApp.Model
                 typeof(CustomCommands)
             );
 
-        //Commandos no implementados
+        public static readonly RoutedUICommand AbrirAyuda = new RoutedUICommand
+        (
+            "AbrirAyuda",
+            "AbrirAyuda",
+            typeof(CustomCommands),
+            null
+        );
+
         public static readonly RoutedUICommand SeleccionarCategoria = new RoutedUICommand
         (
             "SeleccionarCategoria",

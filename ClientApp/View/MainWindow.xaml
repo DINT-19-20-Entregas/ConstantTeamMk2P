@@ -58,6 +58,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
+
         <StackPanel Grid.Row="0">
             <TextBlock Style="{StaticResource FuenteYTamano}" Margin="300,20,0,0" >
                 <Run Foreground="#FFB0002F">Bienvenidos</Run>
