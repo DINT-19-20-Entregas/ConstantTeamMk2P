@@ -48,6 +48,8 @@ namespace AdminApp.Service
             return contexto.ingredientes.Local;
         }
 
+        
+
         // Añadir y eliminar
         public static int AddPlato(Plato item)
         {
@@ -119,8 +121,6 @@ namespace AdminApp.Service
 
             return new ObservableCollection<Plato>(consulta);
         }
-
-
 
         public static int ActualizarBBDD()
         {

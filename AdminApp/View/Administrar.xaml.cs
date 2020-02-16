@@ -28,14 +28,13 @@ namespace AdminApp.View
         public Administrar()
         {
             InitializeComponent();
-            this.DataContext = new AdministrarVM();           
+            this.DataContext = new AdministrarVM();
         }
 
         private void AñadirCategoriaButton_Click(object sender, RoutedEventArgs e)
         {
-            Categoria nuevaCategoria = new Categoria();
 
-            DialogoNuevaCategoria dialogoNuevaCategoria = new DialogoNuevaCategoria(ref nuevaCategoria);
+            DialogoNuevaCategoria dialogoNuevaCategoria = new DialogoNuevaCategoria();
             dialogoNuevaCategoria.Owner = this;
             dialogoNuevaCategoria.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             dialogoNuevaCategoria.ShowDialog();            
@@ -43,7 +42,7 @@ namespace AdminApp.View
 
         private void EditarCategoriaButton_Click(object sender, RoutedEventArgs e)
         {
-            if(CategoriasListBox.SelectedItem != null)
+            if((this.DataContext as AdministrarVM).categoriaSeleccionada != null)
             {
                 NombreCategoriaTextBox.IsEnabled = true;
                 SeleccionarImagenButton.IsEnabled = true;
@@ -53,37 +52,62 @@ namespace AdminApp.View
 
         private void EliminarCategoriaButton_Click(object sender, RoutedEventArgs e)
         {
-            Categoria categoria = CategoriasListBox.SelectedItem as Categoria;
-            MessageBoxResult result = MessageBox.Show("¿Estas seguro de eliminar la categoría " + categoria.nombreCategoria + "?", "Eliminar categoría", MessageBoxButton.YesNo);
-            if(result == MessageBoxResult.Yes)
+            Categoria categoria = (this.DataContext as AdministrarVM).categoriaSeleccionada;
+            if(categoria != null)
             {
-                if((this.DataContext as AdministrarVM).CategoriaVacia(categoria))
-                    (this.DataContext as AdministrarVM).EliminarCategoria(categoria);
-                else
-                    MessageBox.Show("La categoría no esta vacía", "Eliminar categoría", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBoxResult result = MessageBox.Show("¿Estas seguro de eliminar la categoría " + categoria.nombreCategoria + "?", "Eliminar categoría", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                {
+                    if ((this.DataContext as AdministrarVM).CategoriaVacia(categoria))
+                        (this.DataContext as AdministrarVM).EliminarCategoria(categoria);
+                    else
+                        MessageBox.Show("La categoría no esta vacía", "Eliminar categoría", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
+            
             
         }
 
         private void AñadirPlatoButton_Click(object sender, RoutedEventArgs e)
         {
-            Plato nuevoPlato = new Plato();
-            (this.DataContext as AdministrarVM).AñadirPlato(nuevoPlato);
+
+            DialogoNuevoPlato dialogoNuevoPlato = new DialogoNuevoPlato();
+            dialogoNuevoPlato.Owner = this;
+            dialogoNuevoPlato.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            dialogoNuevoPlato.ShowDialog();
         }
 
         private void EditarPlatoButton_Click(object sender, RoutedEventArgs e)
         {
-            if(PlatosListBox.SelectedItem != null)
+            if((this.DataContext as AdministrarVM).platoSeleccionado != null)
             {
                 NombrePlatoTextBox.IsEnabled = true;
+                ListaCategoriasComboBox.IsEnabled = true;
+                PrecioTextBox.IsEnabled = true;
+                SeleccionarImagenPlatoButton.IsEnabled = true;
             }
             
         }
 
         private void EliminarPlatoButton_Click(object sender, RoutedEventArgs e)
         {
-            Plato plato = PlatosListBox.SelectedItem as Plato;
-            (this.DataContext as AdministrarVM).EliminarPlato(plato);
+            Plato plato = (this.DataContext as AdministrarVM).platoSeleccionado;
+            if (plato != null)
+            {
+                MessageBoxResult result = MessageBox.Show("¿Estas seguro de eliminar el plato " + plato.nombrePlato+ "?", "Eliminar plato", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                {
+                    (this.DataContext as AdministrarVM).EliminarPlato(plato);
+                }
+            }
+            
+        }
+
+        
+
+        private void EditarIngredienteButton_Click(object sender, RoutedEventArgs e)
+        {
+            NombreIngredienteTextBox.IsEnabled = true;
         }
 
         private void GuardarCambiosButton_Click(object sender, RoutedEventArgs e)
@@ -102,13 +126,14 @@ namespace AdminApp.View
             NombrePlatoTextBox.IsEnabled = false;
             PrecioTextBox.IsEnabled = false;
             ListaCategoriasComboBox.IsEnabled = false;
+            SeleccionarImagenPlatoButton.IsEnabled = false;
+
         }
 
         private void SeleccionarImagenButton_Click(object sender, RoutedEventArgs e)
         {
-            Categoria c = CategoriasListBox.SelectedItem as Categoria;
-            c.imagenCategoria = SeleccionarImagen();
-            
+            (this.DataContext as AdministrarVM).categoriaSeleccionada.imagenCategoria = SeleccionarImagen();
+            CategoriasListBox.SelectedItem = (this.DataContext as AdministrarVM).categoriaSeleccionada;
         }
 
         public byte[] SeleccionarImagen()
@@ -121,6 +146,32 @@ namespace AdminApp.View
                 return ImageConverter.ImageToBinary(openFileDialog.FileName);
             }
             return null;
+        }
+
+        private void SeleccionarImagenPlatoButton_Click(object sender, RoutedEventArgs e)
+        {
+            Plato p = (this.DataContext as AdministrarVM).platoSeleccionado;
+            p.imagenPlato = SeleccionarImagen();
+        }
+
+        private void AñadirIngredienteButton_Click(object sender, RoutedEventArgs e)
+        {
+            Ingrediente i = new Ingrediente();
+            i.nombreIngrediente = "Nuevo ingrediente";
+            (this.DataContext as AdministrarVM).AñadirIngrediente(i);
+        }
+
+        private void EliminarIngredienteButton_Click(object sender, RoutedEventArgs e)
+        {
+            Ingrediente ingrediente = (this.DataContext as AdministrarVM).ingredienteSeleccionado;
+            if (ingrediente != null)
+            {
+                MessageBoxResult result = MessageBox.Show("¿Estas seguro de eliminar el ingrediente " + ingrediente.nombreIngrediente + "?", "Eliminar ingrediente", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                {
+                    (this.DataContext as AdministrarVM).EliminarIngrediente(ingrediente);
+                }
+            }
         }
     }
 }

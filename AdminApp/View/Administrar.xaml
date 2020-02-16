@@ -6,32 +6,35 @@
         xmlns:local="clr-namespace:AdminApp.View"
         xmlns:model="clr-namespace:AdminApp.Model"
         mc:Ignorable="d"
-        Title="Administrar" Height="600" Width="800">
+        Title="Administrar" Height="600" Width="800" ResizeMode="NoResize">
     <Window.Resources>
         <model:ImageBytesConverter x:Key="conversorImagenes"></model:ImageBytesConverter>
     </Window.Resources>
-    <TabControl>
-        <TabItem Header="Categorias" FontSize="30">
+    <TabControl FontSize="20">
+        <TabItem >
+            <TabItem.Header>
+                <TextBlock Text="Categorias" FontSize="30" />
+            </TabItem.Header>
             <DockPanel>
                 <DockPanel DockPanel.Dock="Left">
                     <StackPanel DockPanel.Dock="Bottom">
                         <Button x:Name="AñadirCategoriaButton" Click="AñadirCategoriaButton_Click">Añadir categoria</Button>
                     </StackPanel>
-                    <ListBox x:Name="CategoriasListBox" ItemsSource="{Binding categorias}" DisplayMemberPath="nombreCategoria" Width="250" SelectionChanged="CategoriasListBox_SelectionChanged">
+                    <ListBox x:Name="CategoriasListBox" ItemsSource="{Binding categorias}" DisplayMemberPath="nombreCategoria" SelectedItem="{Binding categoriaSeleccionada}" Width="250" SelectionChanged="CategoriasListBox_SelectionChanged">
                     </ListBox>
 
                 </DockPanel>
-                <DockPanel LastChildFill="False" DataContext="{Binding ElementName=CategoriasListBox, Path=SelectedItem}">
-                    <StackPanel DockPanel.Dock="Top" Width="350">
+                <DockPanel LastChildFill="False">
+                    <StackPanel DockPanel.Dock="Top" Width="400">
                         <StackPanel Margin="10">
-                            <TextBlock FontSize="20">Nombre</TextBlock>
-                            <TextBox x:Name="NombreCategoriaTextBox" Text="{Binding nombreCategoria}" IsEnabled="False"></TextBox>
+                            <TextBlock >Nombre</TextBlock>
+                            <TextBox x:Name="NombreCategoriaTextBox" Text="{Binding categoriaSeleccionada.nombreCategoria}" IsEnabled="False"></TextBox>
                         </StackPanel>
                         <DockPanel Margin="10">
                             <Border BorderBrush="Black" BorderThickness="1.5" Width="160" Height="160">
-                                <Image x:Name="ImagenCategoria" Source="{Binding imagenCategoria, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource conversorImagenes}}"/>
+                                <Image x:Name="ImagenCategoria" Source="{Binding categoriaSeleccionada.imagenCategoria, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource conversorImagenes}}"/>
                             </Border>
-                            <Button x:Name="SeleccionarImagenButton" VerticalAlignment="Center" FontSize="15" Padding="5" Margin="10" IsEnabled="False" Click="SeleccionarImagenButton_Click">Seleccionar imagen</Button>
+                            <Button x:Name="SeleccionarImagenButton" VerticalAlignment="Center" Padding="5" Margin="10" IsEnabled="False" Click="SeleccionarImagenButton_Click">Seleccionar imagen</Button>
                         </DockPanel>
                         
                     </StackPanel>
@@ -46,49 +49,97 @@
             </DockPanel>
 
         </TabItem>
-        <TabItem Header="Platos" FontSize="30">
+        <TabItem>
+            <TabItem.Header>
+                <TextBlock Text="Platos" FontSize="30" />
+            </TabItem.Header>
             <DockPanel>
                 <DockPanel DockPanel.Dock="Left">
                     <StackPanel DockPanel.Dock="Bottom">
                         <Button x:Name="AñadirPlatoButton" Click="AñadirPlatoButton_Click">Añadir plato</Button>
                     </StackPanel>
-                    <ListBox x:Name="PlatosListBox" ItemsSource="{Binding platos}" DisplayMemberPath="nombrePlato" Width="250">
+                    <ListBox x:Name="PlatosListBox" ItemsSource="{Binding platos}" DisplayMemberPath="nombrePlato" SelectedItem="{Binding platoSeleccionado}" Width="250">
                     </ListBox>
 
                 </DockPanel>
-                <DockPanel LastChildFill="False" DataContext="{Binding ElementName=PlatosListBox, Path=SelectedItem}">
+                <DockPanel LastChildFill="False">
                     <DockPanel  DockPanel.Dock="Top">
                         <StackPanel DockPanel.Dock="Left" Width="350">
                             <StackPanel Margin="10">
-                                <TextBlock FontSize="15">Nombre</TextBlock>
-                                <TextBox x:Name="NombrePlatoTextBox" Text="{Binding nombrePlato}" IsEnabled="False" FontSize="15"></TextBox>
-                                <TextBlock FontSize="15">Categoria</TextBlock>
-                                <ComboBox x:Name="ListaCategoriasComboBox" ItemsSource="{Binding categorias}" DisplayMemberPath="nombreCategoria" SelectedValuePath="idCategoria" SelectedValue="{Binding platoSeleccionado}">
+                                <TextBlock>Nombre</TextBlock>
+                                <TextBox x:Name="NombrePlatoTextBox" Text="{Binding platoSeleccionado.nombrePlato}" IsEnabled="False"></TextBox>
+                                <TextBlock>Categoria</TextBlock>
+                                <ComboBox x:Name="ListaCategoriasComboBox" IsEnabled="False" ItemsSource="{Binding categorias}" DisplayMemberPath="nombreCategoria" SelectedValuePath="idCategoria" SelectedValue="{Binding platoSeleccionado.idCategoria}">
                                     
                                 </ComboBox>
-                                <TextBlock FontSize="15">Precio</TextBlock>
-                                <TextBox x:Name="PrecioTextBox" Text="{Binding precio}" IsEnabled="False" FontSize="15"></TextBox>
-                                <TextBlock FontSize="15">Ingredientes</TextBlock>
-                                <ItemsControl ItemsSource="{Binding ingredientes}">
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <TextBlock FontSize="15" Text="{Binding nombreIngrediente}"></TextBlock>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
+                                <TextBlock>Precio</TextBlock>
+                                <TextBox x:Name="PrecioTextBox" Text="{Binding platoSeleccionado.precio}" IsEnabled="False"></TextBox>
+                                <TextBlock TextDecorations="Underline">Ingredientes</TextBlock>
+                                <Border BorderBrush="Black" BorderThickness="1" Padding="5" Margin="0,5,0,0" Height="180">
+                                    <ItemsControl ItemsSource="{Binding platoSeleccionado.ingredientes}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding nombreIngrediente}"></TextBlock>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </Border>
+                                
                             </StackPanel>
                         </StackPanel>
-
-                        <Border BorderBrush="Black" BorderThickness="1.5" >
-                            <Image ></Image>
-                        </Border>
+                        <StackPanel>
+                            <Border BorderBrush="Black" BorderThickness="1.5" Width="160" Height="160" VerticalAlignment="Top">
+                                <Image x:Name="ImagenPlato" Source="{Binding platoSeleccionado.imagenPlato, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource conversorImagenes}}"/>
+                            </Border>
+                            <Button x:Name="SeleccionarImagenPlatoButton" IsEnabled="False" Margin="10" FontSize="18" Click="SeleccionarImagenPlatoButton_Click">Seleccionar imagen</Button>
+                        </StackPanel>
+                        
                     </DockPanel>
+                    
 
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Bottom">
                         <Button x:Name="GuardarPlatoButton" Margin="10" Padding="5" Click="GuardarCambiosButton_Click" >Guardar</Button>
                         <Button x:Name="EditarPlatoButton" Margin="10" Padding="5" Click="EditarPlatoButton_Click" >Editar</Button>
                         <Button x:Name="EliminarPlatoButton" Margin="10" Padding="5" Click="EliminarPlatoButton_Click" >Eliminar</Button>
+                    </StackPanel>
+                </DockPanel>
+            </DockPanel>
+        </TabItem>
+        <TabItem>
+            <TabItem.Header>
+                <TextBlock Text="Ingredientes" FontSize="30" />
+            </TabItem.Header>
+            <DockPanel>
+                <DockPanel DockPanel.Dock="Left">
+                    <StackPanel DockPanel.Dock="Bottom">
+                        <Button x:Name="AñadirIngredienteButton" >Añadir ingrediente</Button>
+                    </StackPanel>
+                    <ListBox x:Name="IngredientesListBox" ItemsSource="{Binding ingredientes}" DisplayMemberPath="nombreIngrediente" SelectedItem="{Binding ingredienteSeleccionado}" Width="250">
+                    </ListBox>
+
+                </DockPanel>
+                <DockPanel LastChildFill="False">
+                    <StackPanel  DockPanel.Dock="Top" Width="400" Margin="20">
+                            <TextBlock >Nombre</TextBlock>
+                            <TextBox x:Name="NombreIngredienteTextBox" Text="{Binding ingredienteSeleccionado.nombreIngrediente}" IsEnabled="False"></TextBox>
+                            <TextBlock TextDecorations="Underline">Platos</TextBlock>
+                        <Border BorderBrush="Black" BorderThickness="1" Padding="5" Margin="0,5,0,0" MaxHeight="300">
+                            <ItemsControl ItemsSource="{Binding ingredienteSeleccionado.platos}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding nombrePlato}"></TextBlock>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </Border>
+                    </StackPanel>
+
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Bottom">
+                        <Button x:Name="GuardarIngredienteButton" Margin="10" Padding="5" Click="GuardarCambiosButton_Click" >Guardar</Button>
+                        <Button x:Name="EditarIngredienteButton" Margin="10" Padding="5" Click="EditarIngredienteButton_Click" >Editar</Button>
+                        <Button x:Name="EliminarIngredienteButton" Margin="10" Padding="5" Click="EliminarIngredienteButton_Click" >Eliminar</Button>
                     </StackPanel>
                 </DockPanel>
             </DockPanel>
