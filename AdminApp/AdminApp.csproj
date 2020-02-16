@@ -80,6 +80,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\DialogoNuevoPlato.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -129,6 +133,9 @@
     </Compile>
     <Compile Include="View\DialogoNuevaCategoria.xaml.cs">
       <DependentUpon>DialogoNuevaCategoria.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DialogoNuevoPlato.xaml.cs">
+      <DependentUpon>DialogoNuevoPlato.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

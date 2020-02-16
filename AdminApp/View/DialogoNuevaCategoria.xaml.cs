@@ -22,10 +22,10 @@ namespace AdminApp.View
     public partial class DialogoNuevaCategoria : Window
     {
         Categoria nuevaCategoria;
-        public DialogoNuevaCategoria(ref Categoria nuevaCategoria)
+        public DialogoNuevaCategoria()
         {
             InitializeComponent();
-            this.nuevaCategoria = nuevaCategoria;
+            nuevaCategoria = new Categoria();
             
         }
 

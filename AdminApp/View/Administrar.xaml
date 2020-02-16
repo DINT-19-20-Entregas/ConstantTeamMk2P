@@ -69,13 +69,13 @@
                                 <TextBlock>Nombre</TextBlock>
                                 <TextBox x:Name="NombrePlatoTextBox" Text="{Binding platoSeleccionado.nombrePlato}" IsEnabled="False"></TextBox>
                                 <TextBlock>Categoria</TextBlock>
-                                <ComboBox x:Name="ListaCategoriasComboBox" ItemsSource="{Binding categorias}" DisplayMemberPath="nombreCategoria" SelectedValuePath="idCategoria" SelectedValue="{Binding platoSeleccionado.idCategoria}">
+                                <ComboBox x:Name="ListaCategoriasComboBox" IsEnabled="False" ItemsSource="{Binding categorias}" DisplayMemberPath="nombreCategoria" SelectedValuePath="idCategoria" SelectedValue="{Binding platoSeleccionado.idCategoria}">
                                     
                                 </ComboBox>
                                 <TextBlock>Precio</TextBlock>
                                 <TextBox x:Name="PrecioTextBox" Text="{Binding platoSeleccionado.precio}" IsEnabled="False"></TextBox>
                                 <TextBlock TextDecorations="Underline">Ingredientes</TextBlock>
-                                <Border BorderBrush="Black" BorderThickness="1" Padding="5" Margin="0,5,0,0" MaxHeight="220">
+                                <Border BorderBrush="Black" BorderThickness="1" Padding="5" Margin="0,5,0,0" Height="180">
                                     <ItemsControl ItemsSource="{Binding platoSeleccionado.ingredientes}">
                                         <ItemsControl.ItemTemplate>
                                             <DataTemplate>
@@ -87,9 +87,13 @@
                                 
                             </StackPanel>
                         </StackPanel>
-                        <Border BorderBrush="Black" BorderThickness="1.5" Width="160" Height="160" VerticalAlignment="Top">
-                            <Image x:Name="ImagenPlato" Source="{Binding platoSeleccionado.imagenPlato, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource conversorImagenes}}"/>
-                        </Border>
+                        <StackPanel>
+                            <Border BorderBrush="Black" BorderThickness="1.5" Width="160" Height="160" VerticalAlignment="Top">
+                                <Image x:Name="ImagenPlato" Source="{Binding platoSeleccionado.imagenPlato, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource conversorImagenes}}"/>
+                            </Border>
+                            <Button x:Name="SeleccionarImagenPlatoButton" IsEnabled="False" Margin="10" FontSize="18" Click="SeleccionarImagenPlatoButton_Click">Seleccionar imagen</Button>
+                        </StackPanel>
+                        
                     </DockPanel>
                     
 
@@ -116,18 +120,26 @@
 
                 </DockPanel>
                 <DockPanel LastChildFill="False">
-                    <StackPanel DockPanel.Dock="Top" Width="400">
-                        <StackPanel Margin="10">
+                    <StackPanel  DockPanel.Dock="Top" Width="400" Margin="20">
                             <TextBlock >Nombre</TextBlock>
                             <TextBox x:Name="NombreIngredienteTextBox" Text="{Binding ingredienteSeleccionado.nombreIngrediente}" IsEnabled="False"></TextBox>
-                        </StackPanel>                        
+                            <TextBlock TextDecorations="Underline">Platos</TextBlock>
+                        <Border BorderBrush="Black" BorderThickness="1" Padding="5" Margin="0,5,0,0" MaxHeight="300">
+                            <ItemsControl ItemsSource="{Binding ingredienteSeleccionado.platos}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding nombrePlato}"></TextBlock>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </Border>
                     </StackPanel>
 
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Bottom">
-                        <Button x:Name="GuardarIngredienteButton" Margin="10" Padding="5" >Guardar</Button>
-                        <Button x:Name="EditarIngredienteButton" Margin="10" Padding="5" >Editar</Button>
-                        <Button x:Name="EliminarIngredienteButton" Margin="10" Padding="5" >Eliminar</Button>
+                        <Button x:Name="GuardarIngredienteButton" Margin="10" Padding="5" Click="GuardarCambiosButton_Click" >Guardar</Button>
+                        <Button x:Name="EditarIngredienteButton" Margin="10" Padding="5" Click="EditarIngredienteButton_Click" >Editar</Button>
+                        <Button x:Name="EliminarIngredienteButton" Margin="10" Padding="5" Click="EliminarIngredienteButton_Click" >Eliminar</Button>
                     </StackPanel>
                 </DockPanel>
             </DockPanel>
