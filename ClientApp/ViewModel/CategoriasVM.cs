@@ -14,6 +14,7 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.ComponentModel;
 
+
 namespace ClientApp.ViewModel
 {
     public class CategoriasVM : INotifyPropertyChanged

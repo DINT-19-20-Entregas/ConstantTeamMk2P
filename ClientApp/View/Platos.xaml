@@ -112,7 +112,6 @@
                     </TextBlock>
                     
                 </Controls:Tile>
-                
                 <ItemsControl x:Name="listaPedido" ItemsSource="{Binding Pedidoa.platosPorPedido}" Margin="0,-6,0,6">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>

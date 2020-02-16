@@ -17,12 +17,7 @@
                     <StackPanel DockPanel.Dock="Bottom">
                         <Button x:Name="AñadirCategoriaButton" Click="AñadirCategoriaButton_Click">Añadir categoria</Button>
                     </StackPanel>
-                    <ListBox x:Name="CategoriasListBox" ItemsSource="{Binding}"  Width="250" SelectionChanged="CategoriasListBox_SelectionChanged">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding nombreCategoria}" FontSize="20"></TextBlock>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
+                    <ListBox x:Name="CategoriasListBox" ItemsSource="{Binding categorias}" DisplayMemberPath="nombreCategoria" Width="250" SelectionChanged="CategoriasListBox_SelectionChanged">
                     </ListBox>
 
                 </DockPanel>
@@ -57,12 +52,7 @@
                     <StackPanel DockPanel.Dock="Bottom">
                         <Button x:Name="AñadirPlatoButton" Click="AñadirPlatoButton_Click">Añadir plato</Button>
                     </StackPanel>
-                    <ListBox x:Name="PlatosListBox" ItemsSource="{Binding}"  Width="250">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding nombrePlato}" FontSize="20"></TextBlock>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
+                    <ListBox x:Name="PlatosListBox" ItemsSource="{Binding platos}" DisplayMemberPath="nombrePlato" Width="250">
                     </ListBox>
 
                 </DockPanel>
@@ -73,12 +63,8 @@
                                 <TextBlock FontSize="15">Nombre</TextBlock>
                                 <TextBox x:Name="NombrePlatoTextBox" Text="{Binding nombrePlato}" IsEnabled="False" FontSize="15"></TextBox>
                                 <TextBlock FontSize="15">Categoria</TextBlock>
-                                <ComboBox x:Name="ListaCategoriasComboBox" ItemsSource="{Binding}" SelectedItem="{Binding idCategoria}" >
-                                    <ComboBox.ItemTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding nombreCategoria}"></TextBlock>
-                                        </DataTemplate>
-                                    </ComboBox.ItemTemplate>
+                                <ComboBox x:Name="ListaCategoriasComboBox" ItemsSource="{Binding categorias}" DisplayMemberPath="nombreCategoria" SelectedValuePath="idCategoria" SelectedValue="{Binding platoSeleccionado}">
+                                    
                                 </ComboBox>
                                 <TextBlock FontSize="15">Precio</TextBlock>
                                 <TextBox x:Name="PrecioTextBox" Text="{Binding precio}" IsEnabled="False" FontSize="15"></TextBox>

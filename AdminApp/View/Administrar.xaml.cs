@@ -28,10 +28,7 @@ namespace AdminApp.View
         public Administrar()
         {
             InitializeComponent();
-            this.DataContext = new AdministrarVM();
-            CategoriasListBox.DataContext = (this.DataContext as AdministrarVM).categorias;
-            PlatosListBox.DataContext = (this.DataContext as AdministrarVM).platos;
-            ListaCategoriasComboBox.DataContext = (this.DataContext as AdministrarVM).categorias;
+            this.DataContext = new AdministrarVM();           
         }
 
         private void AñadirCategoriaButton_Click(object sender, RoutedEventArgs e)

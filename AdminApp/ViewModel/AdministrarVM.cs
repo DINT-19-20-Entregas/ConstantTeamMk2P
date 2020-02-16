@@ -12,8 +12,10 @@ namespace AdminApp.ViewModel
 {
     public class AdministrarVM
     {
-        public ObservableCollection<Categoria> categorias;
-        public ObservableCollection<Plato> platos;
+        public ObservableCollection<Categoria> categorias { get; set; }
+        public ObservableCollection<Plato> platos { get; set; }
+        public Plato platoSeleccionado { get ; set; }
+        public Categoria categoriaSeleccionada { get; set; }
 
         public AdministrarVM()
         {
