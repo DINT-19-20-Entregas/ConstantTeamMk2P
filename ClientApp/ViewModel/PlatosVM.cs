@@ -5,6 +5,7 @@ using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,14 +15,17 @@ using System.Windows.Media;
 
 namespace ClientApp.ViewModel
 {
-    public class PlatosVM
+    public class PlatosVM : INotifyPropertyChanged
     {
-        private Pedido pedido;
         public ObservableCollection<Plato> platos;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public Pedido Pedidoa { get; set; }
 
         public PlatosVM(Pedido pedido)
         {
-            this.pedido = pedido;
+            this.Pedidoa = pedido;
         }
 
         public List<Tile> InicializarPlatos(Categoria categoria)
@@ -56,7 +60,7 @@ namespace ClientApp.ViewModel
 
         public void CargarCuenta()
         {
-            Cuenta c = new Cuenta(pedido);
+            Cuenta c = new Cuenta(Pedidoa);
             c.Show();
         }
 
@@ -64,15 +68,15 @@ namespace ClientApp.ViewModel
         {
             InfoPlato iP;
             if (platos.Count > 0)
-                iP = new InfoPlato(platos[index], pedido);
+                iP = new InfoPlato(platos[index], Pedidoa);
             else
-                iP = new InfoPlato(new Plato(), pedido);
+                iP = new InfoPlato(new Plato(), Pedidoa);
             iP.Show();
         }
 
         public Pedido GetPedido()
         {
-            return pedido;
+            return Pedidoa;
         }
     }
 }

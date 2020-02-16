@@ -28,14 +28,14 @@ namespace ClientApp.View
             InitializeComponent();
             this.DataContext = new InfoPlatoVM(plato,pedido);
             ListaIngredientes.DataContext = (this.DataContext as InfoPlatoVM).listaIngredientes;
-            PrecioPlatoTextBlock.DataContext = (this.DataContext as InfoPlatoVM).plato;
+            //PrecioPlatoTextBlock.DataContext = (this.DataContext as InfoPlatoVM).plato;
             NombrePlatoTextBlock.DataContext = (this.DataContext as InfoPlatoVM).plato;
             CantidadTextBlock.Text = cantidadPlatos.ToString();
         }
 
         private void AñadirPlato_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            (this.DataContext as InfoPlatoVM).AñadirPlatoAPedido();
+            (this.DataContext as InfoPlatoVM).AñadirPlatoAPedido(cantidadPlatos);
             Close();
         }
 

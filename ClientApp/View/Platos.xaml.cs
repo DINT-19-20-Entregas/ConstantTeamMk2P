@@ -23,23 +23,25 @@ namespace ClientApp.View
     /// </summary>
     public partial class Platos : Window
     {
-        PlatosVM VM;
+        
 
         public Platos(Categoria categoria, Pedido pedido)
         {
             InitializeComponent();
-            VM = new PlatosVM(pedido);
-            ObservableCollection<PlatosPorPedido> ppp = new ObservableCollection<PlatosPorPedido>(VM.GetPedido().platosPorPedido);
-            listaPedido.DataContext = ppp;
+            this.DataContext = new PlatosVM(pedido);
+            //VM = new PlatosVM(pedido);
+            //ObservableCollection<PlatosPorPedido> ppp = VM.GetPedido().platosPorPedido;
+            //listaPedido.DataContext = ppp;
             //llamar al metodo que devuelve la lista de tiles
-            List<Tile> tiles = VM.InicializarPlatos(categoria);
+            List<Tile> tiles = (this.DataContext as PlatosVM).InicializarPlatos(categoria);
             IntroducirPlatos(tiles);
+            //precioTotalButtonTextBlock.DataContext = VM.GetPedido();
         }
 
         private void CargarInfoPlatoCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             //int.Parse(((Tile)sender).Tag.ToString())
-            VM.CargarInfoPlato(int.Parse(((Tile)e.OriginalSource).Tag.ToString()));
+            (this.DataContext as PlatosVM).CargarInfoPlato(int.Parse(((Tile)e.OriginalSource).Tag.ToString()));
         }
 
         private void CargarInfoPlatoCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -59,7 +61,7 @@ namespace ClientApp.View
 
         private void CargarCuentaCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            VM.CargarCuenta();
+            (this.DataContext as PlatosVM).CargarCuenta();
         }
 
         private void CargarCuentaCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)

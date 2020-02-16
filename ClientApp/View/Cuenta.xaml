@@ -5,10 +5,68 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClientApp.View"
         xmlns:comands="clr-namespace:ClientApp.Model"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
         Title="Cuenta" Height="768" Width="1366"
         WindowStyle="None">
+    <Window.CommandBindings>
+        <CommandBinding
+            Command="comands:CustomCommands.Retroceder"
+            Executed="RetrocederCommand_Executed"
+            CanExecute="RetrocederCommand_CanExecute"/>
+        <CommandBinding
+            Command="comands:CustomCommands.ConfirmarCuenta"
+            Executed="ConfirmarCuentaCommand_Executed"
+            CanExecute="ConfirmarCuentaCommand_CanExecute"/>
+    </Window.CommandBindings>
+    <Window.Resources>        
+        <DataTemplate x:Key="CuentaTemplate">
+            <DockPanel>
+                <TextBlock FontFamily="/ClientApp;component/Assets/#Sumida Script DEMO" FontSize="40" Text="200€" DockPanel.Dock="Right" Margin="0,0,40,0"/>                
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontFamily="/ClientApp;component/Assets/#Sumida Script DEMO" FontSize="40">
+                    <Run Text="=>   "/>
+                    <Run Text="2 x  "/>
+                    <Run Text="Hamborguesas de pollo"/>
+                    </TextBlock>
+                </StackPanel>
+            </DockPanel>            
+        </DataTemplate>
+    </Window.Resources>    
     <Grid>
-        
+        <DockPanel>
+            <Border Padding="50,20,20,5" BorderBrush="Black" BorderThickness="0,0,0,5" DockPanel.Dock="Top">
+                <TextBlock Text="CUENTA" FontFamily="/ClientApp;component/Assets/#Sumida Script DEMO" FontSize="80"/>
+            </Border>
+            <Border DockPanel.Dock="Bottom" BorderBrush="Black" BorderThickness="0,5,0,0">
+                <Grid>
+                    <TextBlock HorizontalAlignment="Right" Text="{Binding Path=Pedidoa.precioTotal, UpdateSourceTrigger=PropertyChanged, StringFormat=C, ConverterCulture=ES-es}" FontSize="50" Padding="0,0,100,0" FontFamily="/ClientApp;component/Assets/#Sumida Script DEMO"/>
+                    <Controls:Tile HorizontalAlignment="Center" Command="comands:CustomCommands.ConfirmarCuenta" Background="Green" Height="60">
+                        <TextBlock FontFamily="/ClientApp;component/Assets/#Sumida Script DEMO" FontSize="23" Text="Confirmar Pedido"/>
+                    </Controls:Tile>
+                </Grid>                
+            </Border>
+            <ItemsControl Background="Red" Padding="10" ItemsSource="{Binding Pedidoa.platosPorPedido}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel>
+                            <TextBlock FontFamily="/ClientApp;component/Assets/#Sumida Script DEMO" FontSize="40" Text="{Binding plato.precio, StringFormat=C, ConverterCulture=ES-es}" DockPanel.Dock="Right" Margin="0,0,40,0"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="/ClientApp;component/Assets/#Sumida Script DEMO" FontSize="40">
+                                <Run Text="=>   "/>
+                                <Run Text="{Binding cantidad}"/>
+                                <Run Text="x  "/>
+                                <Run Text="{Binding plato.nombrePlato}"/>
+                                </TextBlock>
+                            </StackPanel>
+                        </DockPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+        </DockPanel>
+        <Controls:Tile HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="95" Margin="-15,0,0,-12" Command="comands:CustomCommands.Retroceder">
+            <Image Source="../Assets/Retroceso.png"/>
+        </Controls:Tile>
     </Grid>
 </Window>

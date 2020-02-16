@@ -207,6 +207,7 @@
     <Resource Include="Assets\minus.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Assets\Confirmar.png" />
     <Content Include="Model\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>

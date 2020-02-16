@@ -108,7 +108,10 @@
                 </ToggleButton>
                 <TextBlock DockPanel.Dock="Top" Style="{StaticResource FuenteYTamano}" Text="Pedido" Margin="0,15,0,30"/>
                 <Controls:Tile DockPanel.Dock="Bottom" Width="200" Height="80" Command="comands:CustomCommands.CargarCuenta">
-                    <TextBlock Style="{StaticResource FuenteYTamano}" Text="Total: 843,98€" Margin="0,15,0,15"/>
+                    <TextBlock x:Name="precioTotalButtonTextBlock" Style="{StaticResource FuenteYTamano}"  Margin="0,15,0,15" >
+                        <Run Text="Total:"/>
+                        <Run Text="{Binding Path=precioTotal, StringFormat=C, ConverterCulture=ES-es}"/>
+                    </TextBlock>
                 </Controls:Tile>
                 
                 <ItemsControl x:Name="listaPedido" ItemsSource="{Binding}">
@@ -121,7 +124,7 @@
                         <Run Text="x"/>
                         <Run Text="{Binding plato.nombrePlato}"/>
                                 </TextBlock>
-                                <TextBlock DockPanel.Dock="Right" HorizontalAlignment="Right" Text="45,05€" Margin="0,0,10,0" FontWeight="Bold"/>
+                                <TextBlock DockPanel.Dock="Right" HorizontalAlignment="Right" Text="{Binding plato.precio, StringFormat=C, ConverterCulture=ES-es}" Margin="0,0,10,0" FontWeight="Bold"/>
                             </DockPanel>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>                    
