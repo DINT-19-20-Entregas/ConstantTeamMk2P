@@ -35,6 +35,7 @@
           <Property Name="idPedido" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="precioTotal" Type="float" Nullable="false" />
           <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="servido" Type="bit" />
         </EntityType>
         <EntityType Name="platos">
           <Key>
@@ -172,6 +173,7 @@
           <Property Name="idPedido" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="precioTotal" Type="Double" Nullable="false" />
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="servido" Type="Boolean" />
           <NavigationProperty Name="platosPorPedido" Relationship="Self.FK__platosPor__idPed__571DF1D5" FromRole="pedidos" ToRole="platosPorPedido" />
         </EntityType>
         <EntityType Name="Plato">
@@ -290,6 +292,7 @@
                 <ScalarProperty Name="idPedido" ColumnName="idPedido" />
                 <ScalarProperty Name="precioTotal" ColumnName="precioTotal" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="servido" ColumnName="servido" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

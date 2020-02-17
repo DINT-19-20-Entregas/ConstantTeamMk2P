@@ -23,6 +23,7 @@ namespace AdminApp.Model
         public int idPedido { get; set; }
         public double precioTotal { get; set; }
         public System.DateTime Fecha { get; set; }
+        public Nullable<bool> servido { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PlatosPorPedido> platosPorPedido { get; set; }
