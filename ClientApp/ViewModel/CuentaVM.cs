@@ -28,6 +28,7 @@ namespace ClientApp.ViewModel
 
         public void GuardarPedido()
         {
+            Pedidoa.Fecha = DateTime.Now;
             BBDDService.AddPedido(Pedidoa);
         }
 

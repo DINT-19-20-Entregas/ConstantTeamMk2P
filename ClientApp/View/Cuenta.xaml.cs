@@ -45,6 +45,7 @@ namespace ClientApp.View
         private void ConfirmarCuentaCommand_Executed(object sender, ExecutedRoutedEventArgs e) 
         {
             (this.DataContext as CuentaVM).GuardarPedido();
+            Close();
         }
 
         private void AbrirAyudaCommand_Executed(object sender, ExecutedRoutedEventArgs e)
