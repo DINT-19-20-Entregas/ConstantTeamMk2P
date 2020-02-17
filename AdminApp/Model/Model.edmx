@@ -195,8 +195,8 @@
           <Property Name="idPedido" Type="Int32" Nullable="false" />
           <Property Name="idPlato" Type="Int32" Nullable="false" />
           <Property Name="cantidad" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="pedidos" Relationship="Self.FK__platosPor__idPed__571DF1D5" FromRole="platosPorPedido" ToRole="pedidos" />
-          <NavigationProperty Name="platos" Relationship="Self.FK__platosPor__idPla__5629CD9C" FromRole="platosPorPedido" ToRole="platos" />
+          <NavigationProperty Name="pedido" Relationship="Self.FK__platosPor__idPed__571DF1D5" FromRole="platosPorPedido" ToRole="pedidos" />
+          <NavigationProperty Name="plato" Relationship="Self.FK__platosPor__idPla__5629CD9C" FromRole="platosPorPedido" ToRole="platos" />
         </EntityType>
         <Association Name="FK__platos__idCatego__4BAC3F29">
           <End Role="categorias" Type="RestauranteConstanteamModel.Categoria" Multiplicity="1" />

@@ -18,7 +18,7 @@ namespace AdminApp.Model
         public int idPlato { get; set; }
         public int cantidad { get; set; }
     
-        public virtual Pedido pedidos { get; set; }
-        public virtual Plato platos { get; set; }
+        public virtual Pedido pedido { get; set; }
+        public virtual Plato plato { get; set; }
     }
 }
