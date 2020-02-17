@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using MahApps.Metro.Controls;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.IO;
 
 namespace ClientApp.View
 {
@@ -87,8 +88,8 @@ namespace ClientApp.View
         }
         
         private void AbrirAyudaCommand_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            Process.Start("ApiRestaurantHelp.chm");
+        {            
+            Process.Start("..\\..\\Assets\\ApiRestaurantHelp.chm");
         }
 
         private void AbrirAyudaCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)

@@ -50,7 +50,7 @@ namespace ClientApp.View
 
         private void AbrirAyudaCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            Process.Start("ApiRestaurantHelp.chm");
+            Process.Start("..\\..\\Assets\\ApiRestaurantHelp.chm");
         }
 
         private void AbrirAyudaCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
