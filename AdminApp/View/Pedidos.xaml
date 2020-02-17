@@ -6,13 +6,25 @@
         xmlns:local="clr-namespace:AdminApp.View"
         mc:Ignorable="d"
         Title="Pedidos" Height="450" Width="800">
+
+    <Window.Resources>
+        <Style TargetType="TextBlock" x:Key="PedidosServidos">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding servido, UpdateSourceTrigger=PropertyChanged}" Value="True">
+                    <Setter Property="Background" Value="Green"></Setter>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    
     <DockPanel>
         <DockPanel>
             <DockPanel DockPanel.Dock="Left">
-                <ListBox x:Name="PedidosListBox" FontSize="20" ItemsSource="{Binding ListaPedidos,UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding PedidoSeleccionado}"  Width="250">
+                <Button x:Name="LimpiarPedidosButton" DockPanel.Dock="Bottom" Height="30" Click="LimpiarPedidosButton_Click">Limpiar pedidos servidos</Button>
+                <ListBox x:Name="PedidosListBox" FontSize="20" ItemsSource="{Binding ListaPedidos}" SelectedItem="{Binding PedidoSeleccionado}"  Width="250">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock>
+                            <TextBlock Style="{StaticResource PedidosServidos}">
                                 <Run Text="Pedido #"></Run>
                                 <Run Text="{Binding idPedido}"></Run>
                             </TextBlock>

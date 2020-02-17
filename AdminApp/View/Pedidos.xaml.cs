@@ -29,12 +29,21 @@ namespace AdminApp.View
 
         private void PedidoServidoButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("¿Estas seguro de marcar el pedido (#" + (this.DataContext as PedidosVM).PedidoSeleccionado.idPedido + ") como servido ?\nEl pedido se eliminará ", "Marcar pedido como servido", MessageBoxButton.YesNo);
-            if (result == MessageBoxResult.Yes)
+            if((this.DataContext as PedidosVM).PedidoSeleccionado != null)
             {
-                Pedido pedido = (this.DataContext as PedidosVM).PedidoSeleccionado;
-                (this.DataContext as PedidosVM).EliminarPedido(pedido);
+                MessageBoxResult result = MessageBox.Show("¿Estas seguro de marcar el pedido (#" + (this.DataContext as PedidosVM).PedidoSeleccionado.idPedido + ") como servido ?", "Marcar pedido como servido", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                {
+                    Pedido pedido = (this.DataContext as PedidosVM).PedidoSeleccionado;
+                    (this.DataContext as PedidosVM).MarcarComoServido(pedido);
+                }
             }
+            
+        }
+
+        private void LimpiarPedidosButton_Click(object sender, RoutedEventArgs e)
+        {
+            (this.DataContext as PedidosVM).EliminarPedidos();
         }
     }
 }

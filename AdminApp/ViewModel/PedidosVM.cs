@@ -22,10 +22,28 @@ namespace AdminApp.ViewModel
             ListaPedidos = BBDDService.GetPedidosOrdenadosPorFecha();
         }
 
-        public void EliminarPedido(Pedido pedido)
+        public void EliminarPedidos()
         {
-            BBDDService.DeletePedido(pedido);
-            MessageBox.Show("Pedido #" + PedidoSeleccionado.idPedido + " servido", "Pedido servido", MessageBoxButton.OK, MessageBoxImage.Information);
+            List<Pedido> pedidosServidos = new List<Pedido>(BBDDService.GetPedidosServidos());
+
+            foreach(Pedido p in pedidosServidos)
+            {
+                BBDDService.DeletePedido(p);
+            }
+
+            BBDDService.ActualizarBBDD();
+
+            
+            MessageBox.Show("Pedidos servidos eliminados correctamente", "Limpiar pedidos servidos", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        public void MarcarComoServido(Pedido pedido)
+        {
+            pedido.servido = true;
+            BBDDService.ActualizarBBDD();
+            MessageBox.Show("Pedido #" + pedido.idPedido + " marcado como servido", "Pedido servido", MessageBoxButton.OK, MessageBoxImage.Information);
+            
+            
         }
 
 

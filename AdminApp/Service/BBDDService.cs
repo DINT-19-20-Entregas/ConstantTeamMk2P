@@ -43,6 +43,16 @@ namespace AdminApp.Service
             return contexto.pedidos.Local;
         }
 
+        public static ObservableCollection<Pedido> GetPedidosServidos()
+        {
+            var consulta = from p in contexto.pedidos
+                           where p.servido == true
+                           select p;
+
+
+            return new ObservableCollection<Pedido>(consulta);
+        }
+
         public static ObservableCollection<Pedido> GetPedidosOrdenadosPorFecha()
         {
             var consulta = from p in contexto.pedidos
