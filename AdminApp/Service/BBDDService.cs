@@ -43,6 +43,16 @@ namespace AdminApp.Service
             return contexto.pedidos.Local;
         }
 
+        public static ObservableCollection<Pedido> GetPedidosOrdenadosPorFecha()
+        {
+            var consulta = from p in contexto.pedidos
+                           orderby p.idPedido descending
+                           select p;
+
+
+            return new ObservableCollection<Pedido>(consulta);
+        }
+
         public static ObservableCollection<Ingrediente> GetIngredientes()
         {
             return contexto.ingredientes.Local;
@@ -117,7 +127,7 @@ namespace AdminApp.Service
         {
             var consulta = from p in contexto.platosPorPedido
                            where p.idPedido == pedido.idPedido
-                           select p.platos;
+                           select p.plato;
 
             return new ObservableCollection<Plato>(consulta);
         }

@@ -33,7 +33,7 @@ namespace AdminApp
             Button botonOrigen = (Button)e.OriginalSource;
             if (botonOrigen.Name == "PedidosButton")
             {
-
+                new Pedidos().Show();
             }
             else
             {

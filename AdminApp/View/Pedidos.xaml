@@ -1,0 +1,54 @@
+﻿<Window x:Class="AdminApp.View.Pedidos"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AdminApp.View"
+        mc:Ignorable="d"
+        Title="Pedidos" Height="450" Width="800">
+    <DockPanel>
+        <DockPanel>
+            <DockPanel DockPanel.Dock="Left">
+                <ListBox x:Name="PedidosListBox" FontSize="20" ItemsSource="{Binding ListaPedidos,UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding PedidoSeleccionado}"  Width="250">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <Run Text="Pedido #"></Run>
+                                <Run Text="{Binding idPedido}"></Run>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+            </DockPanel>
+            <DockPanel LastChildFill="False">
+                <StackPanel DockPanel.Dock="Top" Width="400">
+                    <StackPanel Margin="10">
+                        <TextBlock HorizontalAlignment="Center">Elementos del pedido</TextBlock>
+                        <Border BorderBrush="Black" BorderThickness="1">
+                            <ItemsControl Padding="10" ItemsSource="{Binding PedidoSeleccionado.platosPorPedido}" Height="300">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <DockPanel>
+                                            <TextBlock FontSize="15" Text="{Binding plato.precio, StringFormat=C, ConverterCulture=ES-es}" DockPanel.Dock="Right" Margin="0,0,40,0"/>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock FontSize="15">
+                                <Run Text="{Binding cantidad}"/>
+                                <Run Text="x  "/>
+                                <Run Text="{Binding plato.nombrePlato}"/>
+                                                </TextBlock>
+                                            </StackPanel>
+                                        </DockPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </Border>
+                        
+                    </StackPanel>
+                    <Button x:Name="PedidoServidoButton" HorizontalAlignment="Center" Height="30" Margin="10" Padding="5" Click="PedidoServidoButton_Click">Marcar como servido</Button>
+                </StackPanel>
+                
+            </DockPanel>
+        </DockPanel>
+    </DockPanel>
+</Window>
