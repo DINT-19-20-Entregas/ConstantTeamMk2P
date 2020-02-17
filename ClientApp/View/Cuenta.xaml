@@ -8,7 +8,7 @@
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
         Title="Cuenta" Height="768" Width="1366"
-        WindowStyle="None">
+        WindowStyle="None"  WindowState="Maximized">
     <Window.CommandBindings>
         <CommandBinding
             Command="comands:CustomCommands.Retroceder"

@@ -8,7 +8,7 @@
         xmlns:comands="clr-namespace:ClientApp.Model"
         mc:Ignorable="d"
         Title="Platos" Height="768" Width="1366"
-        WindowStyle="None">
+        WindowStyle="None"  WindowState="Maximized">
     <Window.Resources>
         <Style x:Key="FuenteYTamano" TargetType="TextBlock">
             <Setter Property="FontFamily" Value="/ClientApp;component/Assets/#Sumida Script DEMO"/>

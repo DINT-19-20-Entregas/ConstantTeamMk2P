@@ -8,7 +8,7 @@
         xmlns:comands="clr-namespace:ClientApp.Model"
         mc:Ignorable="d"
         Title="InfoPlato" Height="768" Width="1366"
-        WindowStyle="None">
+        WindowStyle="None"  WindowState="Maximized">
 
     <Window.CommandBindings>
         <CommandBinding 
@@ -26,6 +26,7 @@
             CanExecute="AbrirAyudaCommand_CanExecute"/>
     </Window.CommandBindings>
     <Window.Resources>
+        <comands:ImageBytesConverter x:Key="conversorImagenes"></comands:ImageBytesConverter>
         <Style x:Key="FuenteYTamano" TargetType="TextBlock">
             <Setter Property="FontFamily" Value="/ClientApp;component/Assets/#Sumida Script DEMO"/>
             <Setter Property="FontSize" Value="35"/>
@@ -53,7 +54,7 @@
                     <TextBlock x:Name="NombrePlatoTextBlock" Style="{StaticResource FuenteYTamano}" Text="{Binding nombrePlato}"></TextBlock>                    
                 </Border>
                 <Border Margin="20" BorderBrush="Black" BorderThickness="5"  Width="400" >
-                    <Image Height="300" Width="300" HorizontalAlignment="Center" Source="../Assets/Hamborguesa.png"/>
+                    <Image Height="300" Width="300" HorizontalAlignment="Center" Source="{Binding plato.imagenPlato, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource conversorImagenes}}"/>
                 </Border>
                 <TextBlock FontSize="50" TextAlignment="Center" Style="{StaticResource Fuente}">Cantidad</TextBlock>
                 <Grid>
